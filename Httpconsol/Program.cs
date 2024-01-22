@@ -17,11 +17,13 @@ namespace Httpconsol
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
                 Stream output = response.OutputStream;
-                if (MapHub.Instance.pages[context.Request.Url.Segments[1]] != null)
+                Console.WriteLine(context.Request.Url.Segments.Where(i => i != "/").First());
+                if (MapHub.Instance.pages.TryGetValue(context.Request.Url.Segments.Where(i=>i != "/").First(), out string? obj))
                 {
-                    object test = typeof(Program).GetMethod(MapHub.Instance.pages[request.Url.Segments[2]]).Invoke(new Program(), null);
+                    object test = typeof(Program).GetMethod(obj).Invoke(new Program(), null);
                     if(test is Tuple<int, string> ass)
                     {
+                        Console.WriteLine(obj+" asdwa");
                         response.StatusCode = ass.Item1;
                         responseString = ass.Item2;
                     }
@@ -37,9 +39,7 @@ namespace Httpconsol
         [Mapping("index", HttpType.Get)]
         public Tuple<int, string> Index()
         {
-
             return Tuple.Create(404, "error");
-
         }
 
         

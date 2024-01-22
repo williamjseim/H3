@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Httpconsol")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9ba62be4dee71060fef4808497b0f0c8c70c1dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Httpconsol")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Httpconsol")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Httpconsol")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94cef5bdf80523784c91b43bd41dc13250c76049")]
 [assembly: System.Reflection.AssemblyProductAttribute("Httpconsol")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Httpconsol")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

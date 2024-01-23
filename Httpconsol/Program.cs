@@ -19,35 +19,52 @@ namespace Httpconsol
                 Stream output = response.OutputStream;
                 if (MapHub.Instance.pages.TryGetValue(context.Request.Url.Segments[1].ToLower(), out string? obj))
                 {
-                    object test = typeof(Program).GetMethod(obj).Invoke(new Program(), null);
+                    object test = typeof(Program).GetMethod(obj).Invoke(new Program(), new object?[]{request.Url.Query});
                     if(test is Tuple<int, string> ass)
                     {
+                        byte[] buffer = System.Text.Encoding.UTF8.GetBytes($"<body style=\"background:black; color:white; display:flex; justify-content: center;\">{ass.Item2}</body>");
                         response.StatusCode = ass.Item1;
-                        responseString = $"<body style=\"background:black; color:white; display:flex; justify-content: center;\">{ass.Item2}</body>";
+                        response.ContentLength64 = buffer.Length;
+                        response.Cookies.Append(new Cookie("fuckyou", "suck dick"));
+                        output.Write(buffer, 0, buffer.Length);
+                        output.Close();
                     }
                 }
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-                response.ContentLength64 = buffer.Length;
-                response.Cookies.Add(new Cookie("fuckyou", "suck dick"));
-                output.Write(buffer, 0, buffer.Length);
-                output.Close();
+                else{
+                    byte[] buffer = System.Text.Encoding.UTF8.GetBytes($"<body style=\"background:black; color:white; display:flex; justify-content: center;\">Error</body>");
+                        response.ContentLength64 = buffer.Length;
+                        response.Cookies.Append(new Cookie("fuckyou", "suck dick"));
+                        output.Write(buffer, 0, buffer.Length);
+                        output.Close();
+                }
                 listener.Stop();
             }
         }
 
-        public Tuple<int, string> Index()
+        /*public Tuple<int, HttpListenerResponse> Index(Object?[]? ar)
         {
             return Tuple.Create(404, "error");
-        }
+        }*/
 
-        
-        public Tuple<int, string> Full()
+        public Tuple<int, string> Full(string quary)
         {
-            string page = 
-                @"<span>
-                Fuck you
-                </span>";
-            return Tuple.Create(200, page);
+            return Tuple.Create(200, "response");
+        }
+        Dictionary<int, string> milkshakes = new()
+        {
+            {1, "Chocolet"},
+            {2, "vanilla"},
+            {34, "strawbarry"},
+        };
+        public Tuple<int, string> MilkShake(string quary)
+        {
+            string li = "";
+            foreach (var item in milkshakes)
+            {
+                li += $"<li>{item.Key} {item.Value}</li>";
+            }
+            string page = $"<ol>{li}</ol>";
+            return Tuple.Create(200, li);
         }
     }
 
@@ -71,8 +88,8 @@ namespace Httpconsol
 
         public MapHub()
         {
-            pages.Add("index", nameof(Program.Index));
             pages.Add("full", nameof(Program.Full));
+            pages.Add("milkshakes", nameof(Program.MilkShake));
         }
 
         public Dictionary<string, string> pages = new Dictionary<string, string>();

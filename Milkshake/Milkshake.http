@@ -1,0 +1,6 @@
+@Milkshake_HostAddress = http://localhost:5080
+
+GET {{Milkshake_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

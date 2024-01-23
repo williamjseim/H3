@@ -27,3 +27,17 @@ F:\GitHub\H3\Httpconsol\obj\Debug\net7.0\refint\Httpconsol.dll
 F:\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.pdb
 F:\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.genruntimeconfig.cache
 F:\GitHub\H3\Httpconsol\obj\Debug\net7.0\ref\Httpconsol.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\bin\Debug\net7.0\Httpconsol.exe
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\bin\Debug\net7.0\Httpconsol.deps.json
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\bin\Debug\net7.0\Httpconsol.runtimeconfig.json
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\bin\Debug\net7.0\Httpconsol.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\bin\Debug\net7.0\Httpconsol.pdb
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.AssemblyInfoInputs.cache
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.AssemblyInfo.cs
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.csproj.CoreCompileInputs.cache
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\refint\Httpconsol.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.pdb
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\Httpconsol.genruntimeconfig.cache
+C:\Users\zbcwise\Documents\GitHub\H3\Httpconsol\obj\Debug\net7.0\ref\Httpconsol.dll

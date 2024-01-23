@@ -17,35 +17,37 @@ namespace Httpconsol
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
                 Stream output = response.OutputStream;
-                Console.WriteLine(context.Request.Url.Segments.Where(i => i != "/").First());
-                if (MapHub.Instance.pages.TryGetValue(context.Request.Url.Segments.Where(i=>i != "/").First(), out string? obj))
+                if (MapHub.Instance.pages.TryGetValue(context.Request.Url.Segments[1].ToLower(), out string? obj))
                 {
                     object test = typeof(Program).GetMethod(obj).Invoke(new Program(), null);
                     if(test is Tuple<int, string> ass)
                     {
-                        Console.WriteLine(obj+" asdwa");
                         response.StatusCode = ass.Item1;
-                        responseString = ass.Item2;
+                        responseString = $"<body style=\"background:black; color:white; display:flex; justify-content: center;\">{ass.Item2}</body>";
                     }
                 }
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
                 response.ContentLength64 = buffer.Length;
+                response.Cookies.Add(new Cookie("fuckyou", "suck dick"));
                 output.Write(buffer, 0, buffer.Length);
                 output.Close();
                 listener.Stop();
             }
         }
 
-        [Mapping("index", HttpType.Get)]
         public Tuple<int, string> Index()
         {
             return Tuple.Create(404, "error");
         }
 
         
-        public void Full()
+        public Tuple<int, string> Full()
         {
-
+            string page = 
+                @"<span>
+                Fuck you
+                </span>";
+            return Tuple.Create(200, page);
         }
     }
 
@@ -53,14 +55,6 @@ namespace Httpconsol
     {
         Get,
         Post
-    }
-
-    public class Mapping : Attribute
-    {
-        public Mapping(string page, HttpType type, [CallerMemberName] string owner = "") 
-        {
-            MapHub.Instance.pages.Add(page, owner);
-        }
     }
 
     public class MapHub
@@ -77,7 +71,8 @@ namespace Httpconsol
 
         public MapHub()
         {
-            
+            pages.Add("index", nameof(Program.Index));
+            pages.Add("full", nameof(Program.Full));
         }
 
         public Dictionary<string, string> pages = new Dictionary<string, string>();

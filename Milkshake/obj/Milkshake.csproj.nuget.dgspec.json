@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitHub\\H3\\Milkshake\\Milkshake.csproj": {}
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Milkshake\\Milkshake.csproj": {}
   },
   "projects": {
-    "F:\\GitHub\\H3\\Milkshake\\Milkshake.csproj": {
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Milkshake\\Milkshake.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\H3\\Milkshake\\Milkshake.csproj",
+        "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Milkshake\\Milkshake.csproj",
         "projectName": "Milkshake",
-        "projectPath": "F:\\GitHub\\H3\\Milkshake\\Milkshake.csproj",
-        "packagesPath": "C:\\Users\\Spurgtfuglen\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\H3\\Milkshake\\obj\\",
+        "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Milkshake\\Milkshake.csproj",
+        "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Milkshake\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+          "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Users\\zbcwise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zbcwise\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -50,6 +50,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

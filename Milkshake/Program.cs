@@ -7,7 +7,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSignalR();
 
 //builder.Services.AddDbContext<HackerGameDbContext>(options =>
 //options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));

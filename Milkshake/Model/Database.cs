@@ -9,11 +9,12 @@ namespace Milkshake.Model
     {
         private static Database instance = null;
         public static Database Instance { get { if (instance == null) instance = new(); return instance; } }
+        //loads the database
         private Database()
         {
             IEnumerable<GalacticRoute> routes;
             JsonSerializer serializer = new JsonSerializer();
-            string routepath = "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Milkshake\\galacticRoutes.json";
+            string routepath = "galacticRoutes.json";
             using (StreamReader sr = new StreamReader(routepath))
             using (JsonReader jsonReader = new JsonTextReader(sr))
             {
@@ -24,6 +25,7 @@ namespace Milkshake.Model
             }
         }
 
+        //database of all api keys
         public Dictionary<string, ApiKey> Keys = new()
         {
             {"Kaptajn", new ApiKey(10, 0, true) },
@@ -31,6 +33,17 @@ namespace Milkshake.Model
             {"99", new ApiKey(5, 0) }
         };
 
+        //checks if apikey exists
+        public bool IsApiKeyValid(string apiKey)
+        {
+            if (Keys.ContainsKey(apiKey))
+            {
+                return Keys[apiKey].CallsLeft();
+            }
+            return false;
+        }
+
+        //tick one up the api calls
         public bool ApiCall(string apikey)
         {
             if (Keys[apikey].maxApiCalls <= Keys[apikey].apiCalls)
@@ -40,41 +53,5 @@ namespace Milkshake.Model
             return true;
         }
         public GalacticRoute[] routes { get; private set; }
-    }
-
-    public class ApiKey
-    {
-        public int maxApiCalls;
-        public int apiCalls;
-        public bool isKaptain = false;
-        public ApiKey(int maxApi, int apicalls, bool isKaptain = false)
-        {
-            this.maxApiCalls = maxApi;
-            this.apiCalls = apicalls;
-            this.isKaptain = isKaptain;
-
-        }
-    }
-
-    public class GalacticRoute
-    {
-        public GalacticRoute()
-        {
-            
-        }
-
-        public string name;
-        public string start;
-        public string end;
-        public string[] navigationPoints;
-        public string duration;
-        public string[] dangers;
-        public string fuelUsage;
-        public string descriptions;
-
-        public override string ToString()
-        {
-            return $"{name} {start}";
-        }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Milkshake")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44833a04b5030244930f0bb759574d5f07e78320")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+569b47dd06b72990eafbed9d5a29497665d51f3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Milkshake")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Milkshake")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

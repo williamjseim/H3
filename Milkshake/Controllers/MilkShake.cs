@@ -7,7 +7,7 @@ namespace Milkshake.Controllers
     [Route("api/[Controller]")]
     public class MilkShake : Controller
     {
-
+        const string apikeyCookie = "ApiKey";
         private readonly IConfiguration _config;
 
         public MilkShake(IConfiguration config)
@@ -31,15 +31,15 @@ namespace Milkshake.Controllers
             return Ok(Request.Cookies["Milkshake"]);
         }
 
-        const string apikeyCookie = "ApiKey";
-
+        //creates an api key based on a string 
         [HttpGet("GetApiKeys/{ApiKey}")]
         public async Task<IActionResult> ApikeyCreate(string ApiKey)
         {
             Response.Cookies.Append(apikeyCookie, ApiKey);
-            return Ok("here is a cookie");
+            return Ok("Here's is a cookie. Now fuck off");
         }
 
+        //gets all routes that you are intitled to
         [HttpGet("ApiCall")]
         public async Task<IActionResult> ApiCall()
         {
@@ -49,32 +49,16 @@ namespace Milkshake.Controllers
             }
 
             string apiKey = Request.Cookies[apikeyCookie]!;
-            if (!Database.Instance.Keys.ContainsKey(apiKey))
-                return StatusCode(401, "fuck off");
-
-            if (!Database.Instance.ApiCall(apiKey))
+            if(Database.Instance.IsApiKeyValid(apiKey))
             {
-                return StatusCode(401, "fuck off");
-            }
-
-            string responseString = "";
-            if (!Database.Instance.Keys[apiKey].isKaptain)
-            {
-                foreach (var item in Database.Instance.routes.Where(i => !i.duration.Contains("år")))
+                Database.Instance.ApiCall(apiKey);
+                if (Database.Instance.Keys[apiKey].isKaptain)
                 {
-                    responseString += "\n"+item.ToString();
+                    return Ok(Database.Instance.routes);
                 }
-                return StatusCode(200, Database.Instance.routes.Where(i=>!i.duration.Contains("år")));
+                return Ok(Database.Instance.routes.Where(i=>i.secret == false));
             }
-            else
-            {
-                foreach (var item in Database.Instance.routes)
-                {
-                    responseString += "\n"+item.ToString();
-                }
-                return StatusCode(200, Database.Instance.routes);
-            }
-
+            return StatusCode(401, "fuck off");
         }
     }
 }

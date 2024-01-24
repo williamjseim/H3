@@ -71,3 +71,4 @@ C:\Users\zbcwise\Documents\GitHub\H3\Milkshake\obj\Debug\net8.0\Milkshake.pdb
 C:\Users\zbcwise\Documents\GitHub\H3\Milkshake\obj\Debug\net8.0\Milkshake.genruntimeconfig.cache
 C:\Users\zbcwise\Documents\GitHub\H3\Milkshake\obj\Debug\net8.0\ref\Milkshake.dll
 C:\Users\zbcwise\Documents\GitHub\H3\Milkshake\bin\Debug\net8.0\Newtonsoft.Json.dll
+F:\GitHub\H3\Milkshake\bin\Debug\net8.0\Newtonsoft.Json.dll

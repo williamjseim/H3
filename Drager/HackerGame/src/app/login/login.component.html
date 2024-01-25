@@ -1,0 +1,39 @@
+<div class="UserDivs GreenColor">
+    <form [formGroup]="LoginForm" (ngSubmit)="Login()" [style.display]="register ? 'none' : 'block'">
+            <input placeholder="Username" spellcheck="false" type="text" formControlName="Username" class="LoginLabels LoginMargin"><br>
+            <input placeholder="Password" spellcheck="false" type="password" formControlName="Password" class="LoginLabels LoginMargin"><br>
+
+            <div class="BtnBox LoginMargin Round-Corners">
+                <button class="Btn Btn-One Round-Corners" type="submit">
+                    <span>Login</span>
+                </button>
+            </div>
+        </form>
+    <form [style.display]="register ? 'block' : 'none'" [formGroup]="RegisterForm" (ngSubmit)="RegisterUser()" #form="ngForm">
+        <input formControlName="username" spellcheck="false" placeholder="Username" type="text" class="LoginLabels LoginMargin">
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.username.hasError('usernameAlreadyExists') && form.dirty)">username isnt <strong>Available</strong></div>
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.username.hasError('required') && form.submitted)"><strong>Field required</strong></div>
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.username.hasError('minlength') && form.submitted)"><strong>Username minimum 5 letters</strong></div>
+        <input formControlName="password" spellcheck="false" placeholder="Password" type="password" class="LoginLabels LoginMargin">
+        <div class="ErrMsg" *ngIf="(RegisterForm.hasError('passwordsMatch') && (RegisterForm.controls.verifypassword.dirty || form.submitted))">Password doesnt <strong>Match</strong></div>
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.password.hasError('required') && form.submitted)"><strong>Field required</strong></div>
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.password.hasError('minlength') && form.submitted)"><strong>Password minimum 5 letters</strong></div>
+        <input formControlName="verifypassword" spellcheck="false" placeholder="Verify password" type="password" class="LoginLabels LoginMargin">
+        <input formControlName="email" spellcheck="false" placeholder="Email" type="email" class="LoginLabels LoginMargin">
+        <div class="ErrMsg" *ngIf="(RegisterForm.hasError('emailsMatch') && RegisterForm.controls.verifyemail.dirty)">Email doesnt <strong>Match</strong></div>
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.email.hasError('email') && form.submitted)"><strong>Not an email</strong></div>
+        <div class="ErrMsg" *ngIf="(RegisterForm.controls.email.hasError('required') && form.submitted)"><strong>Field required</strong></div>
+        <input formControlName="verifyemail" spellcheck="false" placeholder="Verify Email" type="email" class="LoginLabels LoginMargin">
+        <div class="BtnBox LoginMargin Round-Corners">
+            <button class="Btn Btn-One Round-Corners" type="submit">
+                <span>Register</span>
+            </button>
+        </div>
+    </form>
+    <div class="BtnBox LoginMargin Round-Corners">
+        <button class="Btn Btn-One Round-Corners" (click)="Register()">
+            <span>{{register == true ? "Login" : "Register"}}</span>
+        </button>
+        
+    </div>
+</div>

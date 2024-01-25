@@ -1,0 +1,77 @@
+$Cyber-Green: rgb(17, 255, 17);
+$Cyber-Gray: rgb(37, 37, 37);
+$Header-Gray: rgb(22, 22, 22);
+$Button-Black: rgb(7, 7, 7);
+
+.IndexBody{
+    margin: 0;
+    height: 100vh;
+}
+
+.RouterDiv{
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.NavBar{
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100vh;
+    background-color: $Cyber-Gray;
+    transition: 250ms;
+    float: left;
+    position: relative;
+}
+
+.NavBarCollapse{
+    height: 100vh;
+    width: 60px;
+    background-color: $Cyber-Gray;
+    transition: 250ms;
+    float: left;
+    position: relative;
+}
+
+.NavBarBtn{
+    position: relative;
+    background-color: $Cyber-Gray;
+    overflow: hidden;
+    left: 0px;
+    height: 48px;
+    width: 100%;
+    border: 0;
+    color: $Cyber-Green;
+    transition: 500ms;
+    z-index: 5;
+}
+
+.NavBarBtn:hover{
+    background-color: $Header-Gray;
+    transition: 200ms;
+    width: 150px;
+}
+
+.NavBarBtn:focus{
+    background-color: $Button-Black;
+}
+
+.NavBarBtnText{
+    font-size: 16px;
+    line-height: 100%;
+    float: left;
+}
+
+.homeBtnImg{
+    float:  left;
+    background: url(../../assets/Techsprites.png) 0px -192px;
+    height: 48px;
+    width: 48px;
+    transform:  scale(0.8);
+}
+
+.logOutBtnPosition{
+    bottom: 0%;
+    position: absolute;
+}

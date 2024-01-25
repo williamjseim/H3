@@ -1,0 +1,42 @@
+<body id="IndexBody" class="IndexBody">
+    <div id="NavBar" class="{{navbarClass}}">
+        <button class="NavBarBtn" (click)="CollapseNavbar()">
+            <div class="homeBtnImg"></div>
+        </button>
+        <button class="NavBarBtn" (click)="HomePage()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Home</p>
+        </button>
+        <button class="NavBarBtn" (click)="TaskPage()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Tasks</p>
+        </button>
+        <button class="NavBarBtn" (click)="InventoryPage()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Software</p>
+        </button>
+        <button class="NavBarBtn" (click)="BrowserPage()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Internet</p>
+        </button>
+        <button class="NavBarBtn" (click)="MapPage()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Map</p>
+        </button>
+        <button class="NavBarBtn" (click)="EquipmentPage()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Equipment</p>
+        </button>
+        <button class="NavBarBtn" (click)="Databases()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Databases</p>
+        </button>
+        <button class="NavBarBtn logOutBtnPosition" (click)="LogOut()">
+            <div class="homeBtnImg"></div>
+            <p class="NavBarBtnText">Log out</p>
+        </button>
+    </div>
+    <div class="RouterDiv">
+        <router-outlet></router-outlet>
+    </div>
+</body>

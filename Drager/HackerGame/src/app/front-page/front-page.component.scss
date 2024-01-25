@@ -1,0 +1,19 @@
+.Black{
+    background-color: black;
+}
+
+.Absolute{
+    position: absolute;
+}
+
+.FrontpageBody{
+    display: grid;
+    height: 100vh;
+    width: 97vw;
+}
+
+.LoginComponent{
+    position: relative;
+    justify-self: center;
+    width: 300px;
+}

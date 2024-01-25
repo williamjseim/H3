@@ -1,0 +1,113 @@
+.FrontPageBody{
+    margin: 0;
+    float: left;
+    width: 100vw;
+    height: 100vh;
+}
+
+.UserDivs{
+    margin-top: 10px;
+    width: 200px;
+    height: 120px;
+    text-align: center;
+    border: 2px solid black;
+    font-family: sans-serif;
+}
+
+.ErrMsg{
+    margin-top: 2px;
+    color: red;
+    text-align: center;
+    font-size: large;
+    font-family: sans-serif;
+    width: 300px;
+}
+
+.LoginMargin{
+    margin-top: 15px;
+}
+
+.LoginLabels{
+    background-color: rgb(37, 37, 37);
+    border: 1px rgb(17, 255, 17) solid;
+    border-radius: 5px;
+    font-size: xx-large;
+    width: 296px;
+    height: 100;
+    color: rgb(17, 255, 17);
+}
+
+.Btnex{
+    width: 200px;
+    font-size: large;
+    background-color: rgb(37, 37, 37);
+    border: 1px rgb(17, 255, 17) solid;
+    border-radius: 5px;
+}
+
+.BtnBox{
+    width: 300px;
+    font-size: large;
+    font-family: sans-serif;
+}
+
+.Round-Corners{
+    border-radius: 5px;
+}
+
+.Btn-One{
+    font-size: xx-large;
+    text-align: center;
+    width: 300px;
+    cursor: pointer;
+}
+
+.Btn{
+    color: rgb(17, 255, 17);
+    transition: all 0.5s;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: transparent;
+    border: 0px;
+}
+
+.Btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(17, 255, 17, 0.2);
+    transition: all 0.3s;
+}
+
+.Btn::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3;
+    border: 1px solid rgba(17, 255, 17,0.5);
+    transform: scale(1.2,1.2);
+}
+
+.Btn:hover::before{
+    opacity: 0;
+    transform: scale(0.5,0.5);
+}
+
+.Btn:hover::after{
+    opacity: 1;
+    transform: scale(1,1);
+}
+
+.GreenColor{
+    color: rgb(17, 255, 17);
+}

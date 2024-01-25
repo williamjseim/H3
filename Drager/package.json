@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@angular/core": "^16.2.1",
+    "luxon": "^3.4.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.0"
+  }
+}

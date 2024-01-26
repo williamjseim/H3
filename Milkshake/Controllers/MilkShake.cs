@@ -31,7 +31,11 @@ namespace Milkshake.Controllers
             return Ok(Request.Cookies["Milkshake"]);
         }
 
-        //creates an api key based on a string 
+        /// <summary>
+        /// creates an api key based on a string 
+        /// </summary>
+        /// <param name="ApiKey"></param>
+        /// <returns></returns>
         [HttpGet("GetApiKeys/{ApiKey}")]
         public async Task<IActionResult> ApikeyCreate(string ApiKey)
         {
@@ -39,7 +43,10 @@ namespace Milkshake.Controllers
             return Ok("Here's is a cookie. Now fuck off");
         }
 
-        //gets all routes that you are intitled to
+        /// <summary>
+        /// gets all routes that you are intitled to
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ApiCall")]
         public async Task<IActionResult> ApiCall()
         {

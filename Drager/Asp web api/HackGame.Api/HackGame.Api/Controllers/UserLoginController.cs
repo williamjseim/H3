@@ -29,7 +29,12 @@ namespace HackGame.Api.Controllers
             jwtAuthorization = new(config, hackerGameDbContext);
         }
 
-        //login to user
+        /// <summary>
+        /// login to user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> Login(string username, string password)
@@ -44,7 +49,12 @@ namespace HackGame.Api.Controllers
             return Unauthorized();
         }
         
-        //creates a user
+        /// <summary>
+        /// creates a user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("CreateUser/{username}/{password}")]
         public async Task<IActionResult> CreateUser(string username, string password)
@@ -58,41 +68,6 @@ namespace HackGame.Api.Controllers
                 return Ok("welcome "+username);
             }
             return BadRequest("fuck off");
-        }
-
-        //quick way of checking if jwt token is valid
-        [JwtTokenAuthorization]
-        [HttpGet("/VerifyLogin")]
-        public async Task<IActionResult> VerifyUser()
-        {
-            if (CheckToken())
-            {
-                return Ok(true);
-            }
-            return Ok(false);
-        }
-
-        //checks if token is valid
-        private bool CheckToken()
-        {
-            try
-            {
-                string token = Request.Cookies[JwtTokenName];
-                JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-                TokenValidationParameters parameters = new TokenValidationParameters {
-                    ValidIssuer = _config["JwtSettings:Issuer"],
-                    ValidAudience = _config["JwtSettings:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]!)),
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidateActor = false,
-                };
-                var result = handler.ValidateToken(token, parameters, out SecurityToken validatedToken);
-                return true;
-            }
-            catch { return false; }
         }
     }
 }

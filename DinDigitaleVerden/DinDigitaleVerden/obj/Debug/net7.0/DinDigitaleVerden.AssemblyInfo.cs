@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DinDigitaleVerden")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75390c583f87c1d10f6b8ea93ef7093250afb81f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dc25b919f395d7d7d67f21e9d94d01b523e271c")]
 [assembly: System.Reflection.AssemblyProductAttribute("DinDigitaleVerden")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DinDigitaleVerden")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

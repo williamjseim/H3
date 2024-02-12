@@ -1,0 +1,11 @@
+<input type="button" (click)="Square()" value="Square">
+<input type="button" (click)="Rectangle()" value="Rectangle">
+
+<div *ngFor="let item of geometry.sides; index as i">
+    <input #Input type="number" value="[(item)]" (change)="this.sides.push(Input.value)">
+</div>
+
+<input value="Area" (click)="Area()" type="button">
+<span>{{text1}}</span>
+<input value="Omkreds" (click)="Omkreds()" type="button">
+<span> {{text2}}</span>

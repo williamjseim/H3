@@ -20,7 +20,6 @@ export class CalculatorComponent {
 
   text1:string = "";
   text2:string = "";
-
   Square(){
     this.geometry = new Square();
   }

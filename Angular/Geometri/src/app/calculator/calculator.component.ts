@@ -1,20 +1,19 @@
-import { Component, input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Geometry } from '../geometry';
 import { Square } from '../square';
 import { Rectangle } from '../rectangle';
-import { CommonModule, NgIf} from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [CommonModule, NgIf],
+  imports: [CommonModule],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
 
 export class CalculatorComponent {
   geometry:Geometry = new Geometry();
-
 
   sides:string[] = [];
 

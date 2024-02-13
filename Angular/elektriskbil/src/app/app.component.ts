@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -44,9 +44,13 @@ export interface ECarsData {
   standalone: true,
   imports: [RouterOutlet, CommonModule, MatTableModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+
+  constructor(){}
+
   title = 'elektriskbil';
   columnsToDisplay = ["rank", "model", "quantity", "percent"]
   subscriber$?: Observable<Array<ECarsData>>

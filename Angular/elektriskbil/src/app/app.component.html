@@ -1,6 +1,12 @@
 <div *ngIf="(subscriber$ | async) as cars">
   <table>
-    <tr *ngFor="let item of cars" [style.background-color]="RandomColor()">
+    <thead>
+      <td [ngStyle]="{ 'background-color': RandomColor()}">Rank</td>
+      <td [ngStyle]="{ 'background-color': RandomColor()}">Model</td>
+      <td [ngStyle]="{ 'background-color': RandomColor()}">Quantity</td>
+      <td [ngStyle]="{ 'background-color': RandomColor()}">Percent</td>
+    </thead>
+    <tr *ngFor="let item of (subscriber$ | async) as cars" [ngStyle]="{ 'background-color': RandomColor()}">
       <td>{{item.rank}}</td>
       <td>{{item.model}}</td>
       <td>{{item.quantity}}</td>
@@ -10,22 +16,22 @@
 </div>
 
 <div *ngIf="(subscriber$ | async) as cars">
-  <table mat-table [dataSource]="cars">
-    <ng-container matColumnDef="rank">
+  <table mat-table [dataSource]="subscriber$!">
+    <ng-container matColumnDef="rank" >
       <th mat-header-cell *matHeaderCellDef> rank </th>
-      <td mat-cell *matCellDef="let element">{{element.rank}}</td>
+      <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': RandomColor()}">{{element.rank}}</td>
     </ng-container>
     <ng-container matColumnDef="model">
       <th mat-header-cell *matHeaderCellDef> model </th>
-      <td mat-cell *matCellDef="let element">{{element.model}}</td>
+      <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': RandomColor()}">{{element.model}}</td>
     </ng-container>
     <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef> quantity </th>
-      <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+      <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': RandomColor()}">{{element.quantity}}</td>
     </ng-container>
     <ng-container matColumnDef="percent">
       <th mat-header-cell *matHeaderCellDef> percent </th>
-      <td mat-cell *matCellDef="let element">{{element.changeQuantityPercent}}</td>
+      <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': RandomColor()}">{{element.changeQuantityPercent}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>

@@ -37,5 +37,19 @@ namespace HackGame.Api.Controllers
             await this._db.SaveChangesAsync();
             return Ok(car);
         }
+
+        [HttpDelete("DeleteCar/{carId}")]
+        public async Task<IActionResult> DeleteCar(Guid carId)
+        {
+            try
+            {
+                var car = await this._db.CarData.Where(i => i.Id == carId).ExecuteDeleteAsync();
+                return Ok(true);
+            }
+            catch
+            {
+                return BadRequest(false);
+            }
+        }
     }
 }

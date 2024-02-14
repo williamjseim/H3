@@ -20,5 +20,9 @@ export class CarHttpService {
   PostCar(rank:number, model:string, numbersold:number, percent:number):Observable<CarModel>{
     return this.http.post<CarModel>(this.baseAPiUrl+`/Car/CreateCar/${rank}/${model}/${numbersold}/${percent}`,"")
   }
+
+  DeleteCar(carId:string): Observable<string>{
+    return this.http.delete<string>(this.baseAPiUrl+`/Car/DeleteCar/${carId}`);
+  }
   
 }

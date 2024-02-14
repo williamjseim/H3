@@ -34,18 +34,21 @@ export class CarTableComponent {
   SubmitCar(){
     if(this.CarForm.valid)
     this.carHttp.PostCar(Number(this.CarForm.get("rank")?.value), this.CarForm.get("model")!.value as string, Number(this.CarForm.get("numbersold")!.value), Number(this.CarForm.get("percentagechange")!.value))
-  .subscribe({next:(value)=>
+    .subscribe({next:(value)=>
     {
       if(value){
         console.log("success")
-        let car = {} as CarModel;
-        car.rank = Number(this.CarForm.get("rank")!.value);
-        car.model = this.CarForm.get("model")!.value as string;
-        car.numberSold = Number(this.CarForm.get("rank")!.value);
-        car.percentageChange = Number(this.CarForm.get("rank")!.value);
-        this.CarList?.push(car);
+        this.CarList?.push(value);
       }
     }});
+  }
+
+  DeleteCar(car:CarModel, index:number){
+    this.carHttp.DeleteCar(car.id!).subscribe({
+      next:(message)=>{
+        this.CarList!.splice(index, 1);
+        console.log(message, index)
+      }});
   }
 
   RandomColor():string{

@@ -1,4 +1,4 @@
-<button (click)="Test()">adwadww</button>
+<button (click)="Test()">GetCars</button>
 <form [formGroup]="CarForm" (ngSubmit)="SubmitCar()">
     <input type="number" formControlName="rank" placeholder="Rank"><br>
     <span style="color: red;" *ngIf="CarForm.get('rank')?.touched">required</span> <br>
@@ -10,11 +10,14 @@
     <span style="color: red;" *ngIf="CarForm.get('percentageChange')?.touched">Required</span>
     <input type="submit">
 </form>
+
 <table>
-    <tr *ngFor="let car of CarList">
-        <td>{{car.rank}}</td>
+    <tr *ngFor="let car of CarList; let i = index">
+        <td [style]="RandomColor()">{{car.rank}}</td>
         <td>{{car.numberSold}}</td>
         <td>{{car.model}}</td>
-        <td [style]="RandomColor()">{{car.percentageChange}}</td>
+        <td>{{car.percentageChange}}</td>
+        <td><input type="button" value="Delete car" (click)="DeleteCar(car, i)"></td>
+        <td><input type="button" value="Edit" (click)="DeleteCar(car, i)"></td>
     </tr>
 </table>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D+FaY/DhWwx9fIls+XMxVcSoNMqYF3vkmIlkX6wDjk2YWI1EDnsW0bS3O3Cuu1X5IU59WY3kFpU7qq+raOXxdg==",
+  "dgSpecHash": "5ByucQjJ6jCcu7F1PFQgqQAPA4VPpPR9g25uceOJKT43ywWRCD4T0EoMNt7YVJRpTgzfvZ7+rPwxHD56r9Yq7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Angular\\Drager\\Asp web api\\HackGame.Api\\HackGame.Api\\HackGame.Api.csproj",
+  "projectFilePath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Angular\\FossilBilermedBackend\\Asp web api\\HackGame.Api\\HackGame.Api\\HackGame.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zbcwise\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\zbcwise\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

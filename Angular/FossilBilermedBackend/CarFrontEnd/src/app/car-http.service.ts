@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CarModel } from './car-model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CarHttpService {
+
+  constructor(private http:HttpClient) { }
+
+  baseAPiUrl = "https://localhost:7247";
+
+  GetAllCars() : Observable<CarModel[]>{
+    console.log("asdw");
+    return this.http.get<CarModel[]>(this.baseAPiUrl+"/Car/GetCars");
+  }
+
+  PostCar(rank:number, model:string, numbersold:number, percent:number):Observable<CarModel>{
+    return this.http.post<CarModel>(this.baseAPiUrl+`/Car/CreateCar/${rank}/${model}/${numbersold}/${percent}`,"")
+  }
+  
+}

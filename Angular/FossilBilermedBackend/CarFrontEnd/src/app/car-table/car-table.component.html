@@ -1,0 +1,20 @@
+<button (click)="Test()">adwadww</button>
+<form [formGroup]="CarForm" (ngSubmit)="SubmitCar()">
+    <input type="number" formControlName="rank" placeholder="Rank"><br>
+    <span style="color: red;" *ngIf="CarForm.get('rank')?.touched">required</span> <br>
+    <input type="text" formControlName="model" placeholder="Model name"><br>
+    <span style="color: red;" *ngIf="CarForm.get('model')?.touched">required</span> <br>
+    <input type="number" formControlName="numbersold" placeholder="Number sold"><br>
+    <span style="color: red;" *ngIf="CarForm.get('numbersold')?.touched">required</span> <br>
+    <input type="number" formControlName="percentagechange" placeholder="percentageChange">
+    <span style="color: red;" *ngIf="CarForm.get('percentageChange')?.touched">Required</span>
+    <input type="submit">
+</form>
+<table>
+    <tr *ngFor="let car of CarList">
+        <td>{{car.rank}}</td>
+        <td>{{car.numberSold}}</td>
+        <td>{{car.model}}</td>
+        <td [style]="RandomColor()">{{car.percentageChange}}</td>
+    </tr>
+</table>

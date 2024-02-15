@@ -4,15 +4,11 @@ import { CarModel } from '../car-model';
 import { CarHttpService } from '../car-http.service';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-car-table',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatInputModule, MatFormFieldModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './car-table.component.html',
   styleUrl: './car-table.component.scss'
 })

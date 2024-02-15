@@ -21,7 +21,8 @@ namespace HackGame.Api.TokenAuthorization
             _db = db;
         }
 
-        public string GenerateJsonWebToken(string username, string password)
+        //roles should be verified by check a database but i cant be bothered
+        public string GenerateJsonWebToken(string username, string password, string role)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]!));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -30,7 +31,7 @@ namespace HackGame.Api.TokenAuthorization
             {
                 new Claim("username", username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("Role", "Admin"),
+                new Claim("Role", role),
             };
 
             var token = new JwtSecurityToken(_config["JwtSettings:Issuer"],

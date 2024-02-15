@@ -23,8 +23,8 @@ export class AppComponent {
     this.router.navigate(["NewPage"])
   }
 
-  GetToken(){
-    this.carhttp.GetToken().subscribe({
+  GetToken(role:string){
+    this.carhttp.GetToken(role).subscribe({
       next:(token)=>{
         localStorage.setItem("Token", token);
       }

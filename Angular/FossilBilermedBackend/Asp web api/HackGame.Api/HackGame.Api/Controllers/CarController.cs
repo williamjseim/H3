@@ -67,10 +67,10 @@ namespace HackGame.Api.Controllers
             return Ok(true);
         }
 
-        [HttpGet("GetToken")]
-        public async Task<IActionResult> GetToken()
+        [HttpGet("GetToken/{role}")]
+        public async Task<IActionResult> GetToken(string role)
         {
-            return Ok(JsonSerializer.Serialize(this._jwt.GenerateJsonWebToken("user", "password")));
+            return Ok(JsonSerializer.Serialize(this._jwt.GenerateJsonWebToken("user", "password", role)));
         }
 
         [AuthorizeAttribute]

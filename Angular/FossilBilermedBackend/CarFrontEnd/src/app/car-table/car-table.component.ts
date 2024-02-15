@@ -1,18 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CarModel } from '../car-model';
 import { CarHttpService } from '../car-http.service';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-car-table',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatTableModule],
   templateUrl: './car-table.component.html',
   styleUrl: './car-table.component.scss'
 })
 export class CarTableComponent {
+displayedColumns: any;
 
   constructor(private carHttp:CarHttpService) {}
   cardataObserver$?:Observable<CarModel[]>;
@@ -33,9 +35,10 @@ export class CarTableComponent {
   })
 
   Test(){
-    console.log("asdwawd");
     this.cardataObserver$ = this.carHttp.GetAllCars();
     this.cardataObserver$.subscribe({next:(value)=>{this.CarList = value;}})
+    this.cardataObserver$ = of(this.CarList!);
+    console.log("adwadw")
     
   }
   SubmitCar(){
@@ -46,6 +49,7 @@ export class CarTableComponent {
       if(value){
         console.log("success")
         this.CarList?.push(value);
+        alert("Car created")
       }
     }});
   }

@@ -62,7 +62,7 @@ namespace HackGame.Api
 
             app.UseHttpsRedirection();
 
-            app.UseCors(policy => policy.WithOrigins("http://localhost:4200/").SetIsOriginAllowed(isOriginAllowed: _ => true).AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(policy => policy.WithOrigins("http://localhost").SetIsOriginAllowed(isOriginAllowed: _ => true).AllowAnyHeader().AllowAnyMethod());
 
             app.MapControllers();
 

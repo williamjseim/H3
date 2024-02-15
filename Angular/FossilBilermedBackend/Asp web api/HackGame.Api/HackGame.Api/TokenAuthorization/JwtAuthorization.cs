@@ -21,18 +21,6 @@ namespace HackGame.Api.TokenAuthorization
             _db = db;
         }
 
-        //public async Task<Guid> GetUserID(string authorizationHeader)
-        //{
-        //    JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(authorizationHeader);
-        //    string userid = jwt.Claims.Where(i=>i.Type == JwtRegisteredClaimNames.NameId).FirstOrDefault().Value.ToString();
-        //    if (userid != null)
-        //    {
-        //        return Guid.Parse(userid);
-        //    }
-        //    return Guid.Empty;
-        //}
-
-        //makes a jwt token
         public string GenerateJsonWebToken(string username, string password)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]!));
@@ -42,6 +30,7 @@ namespace HackGame.Api.TokenAuthorization
             {
                 new Claim("username", username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("Role", "Admin"),
             };
 
             var token = new JwtSecurityToken(_config["JwtSettings:Issuer"],

@@ -1,6 +1,7 @@
 
 using HackGame.Api.Data;
 using HackGame.Api.Hubs;
+using HackGame.Api.TokenAuthorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -41,6 +42,7 @@ namespace HackGame.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddTransient<JwtAuthorization>();
 
             //builder.Services.AddDbContext<HackerGameDbContext>(options =>
             //options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
@@ -57,9 +59,10 @@ namespace HackGame.Api
                 app.UseSwaggerUI();
             }
 
+
             app.UseHttpsRedirection();
 
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            app.UseCors(policy => policy.WithOrigins("http://localhost:4200/").SetIsOriginAllowed(isOriginAllowed: _ => true).AllowAnyHeader().AllowAnyMethod());
 
             app.MapControllers();
 

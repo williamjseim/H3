@@ -29,5 +29,13 @@ export class CarHttpService {
   UpdateCar(carId:string, car:CarModel): Observable<boolean>{
     return this.http.post<boolean>(this.baseAPiUrl+`/Car/UpdateCar/${carId}/${car.rank}/${car.model}/${car.numberSold}/${car.percentageChange}`,"")
   }
+
+  GetToken(): Observable<string>{
+    return this.http.get<string>(this.baseAPiUrl+"/Car/GetToken");
+  }
+
+  Validate() : Observable<boolean>{
+    return this.http.get<boolean>(this.baseAPiUrl+"/Car/Verified");
+  }
   
 }

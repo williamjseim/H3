@@ -32,7 +32,7 @@ namespace HackGame.Api.Controllers
         [HttpPost("CreateCar/{rank}/{model}/{numbersold}/{percent}")]
         public async Task<IActionResult> CreateCar(int rank, string model, int numbersold, int percent)
         {
-            Car car = new() { Rank = rank, Model = model, Id = Guid.NewGuid(), NumberSold = numbersold, PercentageChange = percent};
+            Car car = new() { rank = rank, model = model, id = Guid.NewGuid(), numberSold = numbersold, percentageChange = percent};
             await this._db.CarData.AddAsync(car);
             await this._db.SaveChangesAsync();
             return Ok(car);
@@ -43,13 +43,22 @@ namespace HackGame.Api.Controllers
         {
             try
             {
-                var car = await this._db.CarData.Where(i => i.Id == carId).ExecuteDeleteAsync();
+                var car = await this._db.CarData.Where(i => i.id == carId).ExecuteDeleteAsync();
                 return Ok(true);
             }
             catch
             {
                 return BadRequest(false);
             }
+        }
+
+        [HttpPost("UpdateCar/{carId}/{rank}/{model}/{numbersold}/{percentchanged}")]
+        public async Task<IActionResult> UpdateCar(string carId, int rank, string model, int numbersold, int percentchanged)
+        {
+            var car = new Car() { id = Guid.Parse(carId), rank = rank, model = model, numberSold = numbersold, percentageChange = percentchanged };
+            _db.CarData.Update(car);
+            await _db.SaveChangesAsync();
+            return Ok(true);
         }
     }
 }

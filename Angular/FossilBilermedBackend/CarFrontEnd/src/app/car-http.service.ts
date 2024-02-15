@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CarModel } from './car-model';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class CarHttpService {
 
   DeleteCar(carId:string): Observable<string>{
     return this.http.delete<string>(this.baseAPiUrl+`/Car/DeleteCar/${carId}`);
+  }
+
+  UpdateCar(carId:string, car:CarModel): Observable<boolean>{
+    return this.http.post<boolean>(this.baseAPiUrl+`/Car/UpdateCar/${carId}/${car.rank}/${car.model}/${car.numberSold}/${car.percentageChange}`,"")
   }
   
 }

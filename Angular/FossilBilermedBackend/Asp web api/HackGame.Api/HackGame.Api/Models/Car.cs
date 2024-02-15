@@ -4,11 +4,11 @@ namespace HackGame.Api.Models
 {
     public class Car
     {
-        public Guid Id { get; set; }
-        public int Rank { get; set; }
-        public string Model { get; set; } = string.Empty;
-        public int NumberSold { get; set; }
-        public int PercentageChange { get; set; }
+        public Guid id { get; set; }
+        public int rank { get; set; }
+        public string model { get; set; } = string.Empty;
+        public int numberSold { get; set; }
+        public int percentageChange { get; set; }
 
     }
 }

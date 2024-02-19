@@ -1,69 +1,35 @@
-<body>
+<button (click)="Test()">GetCars</button>
+<form *ngIf="carId == ''" [formGroup]="CarForm" (ngSubmit)="SubmitCar()">
+    <input type="number" formControlName="rank" placeholder="Rank"><br>
+    <span style="color: red;" *ngIf="CarForm.get('rank')?.touched">required</span> <br>
+    <input type="text" formControlName="model" placeholder="Model name"><br>
+    <span style="color: red;" *ngIf="CarForm.get('model')?.touched">required</span> <br>
+    <input type="number" formControlName="numbersold" placeholder="Number sold"><br>
+    <span style="color: red;" *ngIf="CarForm.get('numbersold')?.touched">required</span> <br>
+    <input type="number" formControlName="percentagechange" placeholder="percentageChange">
+    <span style="color: red;" *ngIf="CarForm.get('percentageChange')?.touched">Required</span>
+    <input type="submit">
+</form>
 
-    <button (click)="Test()">GetCars</button>
-    <form *ngIf="carId == ''" [formGroup]="CarForm" (ngSubmit)="SubmitCar()">
-        <input type="number" formControlName="rank" placeholder="Rank"><br>
-        <span style="color: red;" *ngIf="CarForm.get('rank')?.touched">required</span> <br>
-        <input type="text" formControlName="model" placeholder="Model name"><br>
-        <span style="color: red;" *ngIf="CarForm.get('model')?.touched">required</span> <br>
-        <input type="number" formControlName="numbersold" placeholder="Number sold"><br>
-        <span style="color: red;" *ngIf="CarForm.get('numbersold')?.touched">required</span> <br>
-        <input type="number" formControlName="percentagechange" placeholder="percentageChange">
-        <span style="color: red;" *ngIf="CarForm.get('percentageChange')?.touched">Required</span>
-        <input type="submit">
-    </form>
-    
-    <table>
-        <tr *ngFor="let car of CarList; let i = index">
-            <td>{{car.rank}}</td>
-            <td>{{car.numberSold}}</td>
-            <td>{{car.model}}</td>
-            <td>{{car.percentageChange}}</td>
-            <td><input type="button" value="Delete car" (click)="DeleteCar(car, i)"></td>
-            <td><input type="button" value="Edit" (click)="EditCar(car.id!, i)"></td>
-        </tr>
-    </table>
-    
-    <form *ngIf="carId != ''" [formGroup]="CarEditForm" (ngSubmit)="UpdateCar()">
-        <input type="number" formControlName="rank" placeholder="Rank"><br>
-        <span style="color: red;" *ngIf="CarForm.get('rank')?.touched">required</span> <br>
-        <input type="text" formControlName="model" placeholder="Model name"><br>
-        <span style="color: red;" *ngIf="CarForm.get('model')?.touched">required</span> <br>
-        <input type="number" formControlName="numbersold" placeholder="Number sold"><br>
-        <span style="color: red;" *ngIf="CarForm.get('numbersold')?.touched">required</span> <br>
-        <input type="number" formControlName="percentagechange" placeholder="percentageChange">
-        <span style="color: red;" *ngIf="CarForm.get('percentageChange')?.touched">Required</span>
-        <input type="submit">
-    </form>
-    
-    
-    <table *ngIf="cardataObserver$ != null" mat-table [dataSource]="cardataObserver$" class="mat-elevation-z8">
-        
-        <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-            
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> model. </th>
-                <td mat-cell *matCellDef="let element"> {{element.model}} </td>
-            </ng-container>
-            
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> rank </th>
-                <td mat-cell *matCellDef="let element"> {{element.Rank}} </td>
-            </ng-container>
-            
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> numbersold </th>
-                <td mat-cell *matCellDef="let element"> {{element.numberSold}} </td>
-            </ng-container>
-            
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> percent </th>
-      <td mat-cell *matCellDef="let element"> {{element.percentageChange}} </td>
-    </ng-container>
+<table>
+    <tr *ngFor="let car of CarList; let i = index">
+        <td>{{car.rank}}</td>
+        <td>{{car.numberSold}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.percentageChange}}</td>
+        <td><input type="button" value="Delete car" (click)="DeleteCar(car, i)"></td>
+        <td><input type="button" value="Edit" (click)="EditCar(car.id!, i)"></td>
+    </tr>
 </table>
-</body>
+
+<form *ngIf="carId != ''" [formGroup]="CarEditForm" (ngSubmit)="UpdateCar()">
+    <input type="number" formControlName="rank" placeholder="Rank"><br>
+    <span style="color: red;" *ngIf="CarForm.get('rank')?.touched">required</span> <br>
+    <input type="text" formControlName="model" placeholder="Model name"><br>
+    <span style="color: red;" *ngIf="CarForm.get('model')?.touched">required</span> <br>
+    <input type="number" formControlName="numbersold" placeholder="Number sold"><br>
+    <span style="color: red;" *ngIf="CarForm.get('numbersold')?.touched">required</span> <br>
+    <input type="number" formControlName="percentagechange" placeholder="percentageChange">
+    <span style="color: red;" *ngIf="CarForm.get('percentageChange')?.touched">Required</span>
+    <input type="submit">
+</form>

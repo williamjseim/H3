@@ -1,0 +1,15 @@
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\bin\Debug\net8.0\Kryptering.exe
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\bin\Debug\net8.0\Kryptering.deps.json
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\bin\Debug\net8.0\Kryptering.runtimeconfig.json
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\bin\Debug\net8.0\Kryptering.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\bin\Debug\net8.0\Kryptering.pdb
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.AssemblyInfoInputs.cache
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.AssemblyInfo.cs
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.csproj.CoreCompileInputs.cache
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.sourcelink.json
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\refint\Kryptering.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.pdb
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\Kryptering.genruntimeconfig.cache
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\obj\Debug\net8.0\ref\Kryptering.dll

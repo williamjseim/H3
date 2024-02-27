@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Kryptering.csproj": {}
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Tilfældighed\\Kryptering.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Kryptering.csproj": {
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Tilfældighed\\Kryptering.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Kryptering.csproj",
+        "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Tilfældighed\\Kryptering.csproj",
         "projectName": "Kryptering",
-        "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Kryptering.csproj",
+        "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Tilfældighed\\Kryptering.csproj",
         "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\obj\\",
+        "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Tilfældighed\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

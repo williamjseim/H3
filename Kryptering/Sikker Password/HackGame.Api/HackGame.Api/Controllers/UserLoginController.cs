@@ -39,6 +39,16 @@ namespace HackGame.Api.Controllers
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> Login(string username, string password)
         {
+            var user = await this._db.Login_Data.Where(i => i.Username == username).FirstOrDefaultAsync();
+            if(user == null)
+                return Unauthorized();
+
+            var hashedPass = PasswordHasher.HashPassword(password, _config["Salt"]!);
+            if(user.Password == hashedPass)
+            {
+                return Ok(user);
+            }
+
             return Unauthorized();
         }
         
@@ -56,6 +66,14 @@ namespace HackGame.Api.Controllers
             CookieOptions co = new();
             co.Expires = DateTime.Now.AddMinutes(5);
             Response.Cookies.Append(JwtTokenName, jwtAuthorization.GenerateJsonWebToken(username,password), co);
+            UserData user = new()
+            {
+                Username = username,
+                Password = PasswordHasher.HashPassword(password, _config["Salt"]!),
+                Id = Guid.NewGuid(),
+            };
+            await _db.AddAsync(user);
+            await _db.SaveChangesAsync();
             return Ok("welcome "+username);
         }
     }

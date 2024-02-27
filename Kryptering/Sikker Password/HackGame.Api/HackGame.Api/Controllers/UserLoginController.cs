@@ -39,17 +39,19 @@ namespace HackGame.Api.Controllers
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> Login(string username, string password)
         {
-            var user = await this._db.Login_Data.Where(i => i.Username == username).FirstOrDefaultAsync();
+            var user = await this._db.Login_Data.Where(i => i.Username == username).FirstOrDefaultAsync();//gets the first user that matches the username
             if(user == null)
-                return Unauthorized();
+                return Unauthorized("Username or password is wrong");
 
-            var hashedPass = PasswordHasher.HashPassword(password, _config["Salt"]!);
+            var hashedPass = PasswordHasher.HashPassword(password, _config["Salt"]!);// recreates hashed password
             if(user.Password == hashedPass)
             {
+                CookieOptions co = new() { IsEssential = true };
+                Response.Cookies.Append(JwtTokenName, jwtAuthorization.GenerateJsonWebToken(username,password), co);//generates a jwt token for user
                 return Ok(user);
             }
 
-            return Unauthorized();
+            return Unauthorized("Username or password is wrong");
         }
         
         /// <summary>
@@ -60,16 +62,16 @@ namespace HackGame.Api.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("CreateUser/{username}/{password}")]
-        public async Task<IActionResult> CreateUser(string username, string password)
+        public async Task<IActionResult> CreateUser(string username, string password)//this doesnt check for already existing users
         {
             Console.WriteLine(username + password);
             CookieOptions co = new();
             co.Expires = DateTime.Now.AddMinutes(5);
-            Response.Cookies.Append(JwtTokenName, jwtAuthorization.GenerateJsonWebToken(username,password), co);
+            Response.Cookies.Append(JwtTokenName, jwtAuthorization.GenerateJsonWebToken(username,password), co);//generates a jwt token for user
             UserData user = new()
             {
                 Username = username,
-                Password = PasswordHasher.HashPassword(password, _config["Salt"]!),
+                Password = PasswordHasher.HashPassword(password, _config["Salt"]!),//Gets salt from appconfig and gives it to the passwordhasher to hash the password
                 Id = Guid.NewGuid(),
             };
             await _db.AddAsync(user);

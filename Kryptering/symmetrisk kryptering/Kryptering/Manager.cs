@@ -23,6 +23,7 @@ namespace Kryptering
             encrypters = new EncrypterBase[]
             {
                 new AesEncrypter(),
+                new DesEncrypter(),
             };
         }
 
@@ -44,6 +45,8 @@ namespace Kryptering
         {
             try
             {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
                 int i = main.CryptoBox.SelectedIndex;
                 Debug.WriteLine(i);
                 /*if(aes == null)
@@ -55,6 +58,8 @@ namespace Kryptering
                 {
                     this.encrytedBytes = encrytedBytes;
                     UpdateText(encrytedBytes);
+                    sw.Stop();
+                    this.main.TimeBox.Text = sw.Elapsed.ToString()+" Time elabsed";
                 }
                 else
                 {
@@ -72,6 +77,7 @@ namespace Kryptering
             var encryptedText = Encoding.ASCII.GetString(encrytedBytes);
             main.CipherASCII.Text = encryptedText;
             main.CipherHex.Text = Convert.ToHexString(encryptedBytes);
+            this.main.PlainTextHex.Text = Convert.ToHexString(encryptedBytes);
             Debug.WriteLine(encryptedText);
         }
     }

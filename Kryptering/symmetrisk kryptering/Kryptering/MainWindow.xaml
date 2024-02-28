@@ -25,7 +25,6 @@
             </Grid.RowDefinitions>
             <ComboBox SelectedIndex="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="CryptoBox">
                 <ComboBoxItem>Aes</ComboBoxItem>
-                <ComboBoxItem>Des</ComboBoxItem>
                 <ComboBoxItem>TripleDes</ComboBoxItem>
             </ComboBox>
             <Button Name="KeyGenerateButton" Grid.Row="1">Generate key</Button>
@@ -73,6 +72,14 @@
             </Grid.RowDefinitions>
             <Button Name="Encrypt" FontSize="25">Encrypt</Button>
             <Button Name="Decrypt" Grid.Row="1" FontSize="25">Decrypt</Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Name="TimeBox" IsEnabled="False"></TextBox>
         </Grid>
     </Grid>
 </Window>

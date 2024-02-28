@@ -5,16 +5,15 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace Kryptering.Encrypters
 {
-    internal class AesEncrypter : EncrypterBase
+    class DesEncrypter : EncrypterBase
     {
-        Aes aes;
-        public AesEncrypter()
+        TripleDES des;
+        public DesEncrypter()
         {
-            aes = Aes.Create();
+            this.des = TripleDES.Create();
         }
 
         public override bool Decrypt(string text, out byte[] EncryptedBytes)
@@ -26,15 +25,14 @@ namespace Kryptering.Encrypters
         {
             try
             {
-                Debug.WriteLine(aes.IV.Length+" "+aes.Key.Length);
-                if(aes.IV == null || aes.Key == null)
+                if (des.IV == null || des.Key == null)
                 {
                     encryptedBytes = new byte[0];
                     return false;
                 }
                 byte[] plainText = Encoding.UTF8.GetBytes(text);
                 byte[] ciphertext = new byte[plainText.Length];
-                encryptedBytes = aes.EncryptCfb(plainText, aes.IV);
+                encryptedBytes = des.EncryptCfb(plainText, des.IV);
                 return true;
             }
             catch (Exception ex)
@@ -47,9 +45,9 @@ namespace Kryptering.Encrypters
 
         public override Tuple<byte[], byte[]> GenerateKeyAndIv()
         {
-            aes.GenerateKey();
-            aes.GenerateIV();
-            return Tuple.Create(aes.Key, aes.IV);
+            this.des.GenerateKey();
+            this.des.GenerateIV();
+            return Tuple.Create(des.Key, des.IV);
         }
     }
 }

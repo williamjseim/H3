@@ -24,6 +24,7 @@ namespace Kryptering
             {
                 new AesEncrypter(),
                 new DesEncrypter(),
+                new RsaEncrypter(),
             };
         }
 

@@ -26,6 +26,7 @@
             <ComboBox SelectedIndex="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="CryptoBox">
                 <ComboBoxItem>Aes</ComboBoxItem>
                 <ComboBoxItem>TripleDes</ComboBoxItem>
+                <ComboBoxItem>Rsa</ComboBoxItem>
             </ComboBox>
             <Button Name="KeyGenerateButton" Grid.Row="1">Generate key</Button>
         </Grid>

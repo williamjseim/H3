@@ -8,26 +8,26 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Spurgtfuglen\\.nuget\\packages\\": {},
-    "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
+    "C:\\Users\\zbcwise\\.nuget\\packages\\": {},
+    "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\H3\\Kryptering\\symmetrisk kryptering\\Kryptering\\Kryptering.csproj",
+      "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\symmetrisk kryptering\\Kryptering\\Kryptering.csproj",
       "projectName": "Kryptering",
-      "projectPath": "F:\\GitHub\\H3\\Kryptering\\symmetrisk kryptering\\Kryptering\\Kryptering.csproj",
-      "packagesPath": "C:\\Users\\Spurgtfuglen\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\H3\\Kryptering\\symmetrisk kryptering\\Kryptering\\obj\\",
+      "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\symmetrisk kryptering\\Kryptering\\Kryptering.csproj",
+      "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\symmetrisk kryptering\\Kryptering\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+        "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Users\\Spurgtfuglen\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Users\\zbcwise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zbcwise\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

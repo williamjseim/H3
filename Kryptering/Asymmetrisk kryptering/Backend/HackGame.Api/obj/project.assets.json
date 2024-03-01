@@ -2628,16 +2628,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
-      },
-      "ChatLibrary/1.0.0": {
-        "type": "project",
-        "framework": "Unsupported,Version=v0.0",
-        "compile": {
-          "bin/placeholder/ChatLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ChatLibrary.dll": {}
-        }
       }
     }
   },
@@ -8471,16 +8461,10 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
-    },
-    "ChatLibrary/1.0.0": {
-      "type": "project",
-      "path": "../ChatLibrary/ChatLibrary.csproj",
-      "msbuildProject": "../ChatLibrary/ChatLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "ChatLibrary >= 1.0.0",
       "Microsoft.AspNet.WebApi.Core >= 5.2.9",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.10",
       "Microsoft.AspNetCore.OpenApi >= 7.0.10",
@@ -8525,11 +8509,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Asymmetrisk kryptering\\Backend\\ChatLibrary\\ChatLibrary.csproj": {
-              "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\H3\\Kryptering\\Asymmetrisk kryptering\\Backend\\ChatLibrary\\ChatLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -8603,15 +8583,6 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.WebApi.Core",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "Project ChatLibrary is not compatible with net7.0 (.NETCoreApp,Version=v7.0). Project ChatLibrary supports: net8.0 (.NETCoreApp,Version=v8.0)",
-      "libraryId": "ChatLibrary",
       "targetGraphs": [
         "net7.0"
       ]

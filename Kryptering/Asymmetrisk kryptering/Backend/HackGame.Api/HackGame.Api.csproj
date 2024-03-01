@@ -24,8 +24,4 @@
     <Folder Include="Singletons\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ChatLibrary\ChatLibrary.csproj" />
-  </ItemGroup>
-
 </Project>

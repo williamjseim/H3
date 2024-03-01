@@ -15,7 +15,7 @@ namespace HackGame.Api.Hubs
         }
         public override async Task OnConnectedAsync()
         {
-            byte[] userData = await Clients.Caller.InvokeAsync("RequestKey", rsa.ExportRSAPublicKey());
+            byte[] userData = await Clients.Caller.InvokeAsync<byte[]>("RequestKey", this.rsa.ExportRSAPublicKey(), new CancellationToken());
             return;
         }
 
@@ -24,8 +24,9 @@ namespace HackGame.Api.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task<byte[]> ExchangeRsaKeys(byte[] key)
+        public async Task<byte[]> RequestKey(byte[] key)
         {
+            this.userRsa.ImportRSAPublicKey(key, out int byasdw);
             return this.rsa.ExportRSAPublicKey();
         }
 

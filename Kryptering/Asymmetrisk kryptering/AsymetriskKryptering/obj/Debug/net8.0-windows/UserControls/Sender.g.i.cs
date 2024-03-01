@@ -85,7 +85,7 @@ namespace AsymetriskKryptering.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AsymetriskKryptering;V1.0.0.0;component/usercontrols/sender.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AsymetriskKryptering;component/usercontrols/sender.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControls\Sender.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

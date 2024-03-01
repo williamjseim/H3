@@ -23,6 +23,8 @@ C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\Asymetris
 C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\bin\Debug\net8.0-windows\Owin.dll
 C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\bin\Debug\net8.0-windows\ChatLibrary.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\bin\Debug\net8.0-windows\ChatLibrary.pdb
 C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\obj\Debug\net8.0-windows\AsymetriskKryptering.csproj.AssemblyReference.cache
 C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\zbcwise\Documents\GitHub\H3\Kryptering\Asymmetrisk kryptering\AsymetriskKryptering\obj\Debug\net8.0-windows\UserControls\Sender.g.cs

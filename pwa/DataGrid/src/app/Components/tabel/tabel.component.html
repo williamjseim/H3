@@ -1,0 +1,23 @@
+<div id="ButtonContainer">
+    <input #UploadImage type="file" value="Test" style="display: none;">
+    <button mat-fab (click)="UploadImageActivator()"><mat-icon >upload</mat-icon></button>
+</div>
+<table mat-table [dataSource]="data">
+    <ng-container matColumnDef="Image">
+        <th mat-header-cell *matHeaderCellDef>Image</th>
+        <td mat-cell *matCellDef="let element">{{element.Image}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="DropBox">
+        <th mat-header-cell *matHeaderCellDef>Info</th>
+        <td mat-cell *matCellDef="let element">
+            <mat-menu #Info="matMenu">
+                <label mat-menu-item>{{element.Size}}</label>
+                <label mat-menu-item>{{element.FileType}}</label>
+            </mat-menu>
+        </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

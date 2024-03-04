@@ -28,12 +28,20 @@ namespace AsymetriskKryptering.UserControls
             InitializeComponent();
             rsa = RSA.Create();
             ConnectButton.Click += Connect;
-            this.connector = new();
-            SendButton.Click += connector.SendMessage;
         }
 
         private void Connect(object sender, EventArgs args)
         {
+            if(connector == null)
+            {
+                connector = new();
+                SendButton.Click += connector.SendMessage;
+                return;
+            }
+            else
+            {
+                connector.Reconnect(sender, args);
+            }
         }
     }
 }

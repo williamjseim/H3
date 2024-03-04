@@ -12,37 +12,45 @@ namespace AsymetriskKryptering
     class SignalrConnector
     {
         public static HubConnection hubConnection;
-        RSA rsa = RSA.Create();
+        RSA userRsa = RSA.Create();
         RSA serverRsa = RSA.Create();
         public SignalrConnector()
         {
-            rsa.KeySize = 2048;
+            userRsa.KeySize = 2048;
             serverRsa.KeySize = 2048;
             string url = $"https://localhost:7247/Chathub";
             hubConnection = new HubConnectionBuilder().WithUrl(url).Build();
             hubConnection.StartAsync().Wait();
-            hubConnection.On<byte[]>("Connected", Message);
+            hubConnection.On<string>("RequestKey", RequestKey);
+            hubConnection.On<byte[]>("ReceiveMessage", ReceiveMessage);
         }
 
-        public void Message(byte[] encryptedMessage)
+        public void Reconnect(object sender, EventArgs e)
         {
+            hubConnection.StopAsync().Wait();
+            hubConnection.StartAsync().Wait();
         }
 
-        public async Task RequestKey()
+        public async Task RequestKey(string key)
         {
-            var key = await hubConnection.InvokeAsync<byte[]>("RequestKey", rsa.ExportRSAPublicKey());
-            this.serverRsa.ImportRSAPublicKey(key, out int bytesread);
+            this.serverRsa.ImportRSAPublicKey(Convert.FromBase64String(key), out int bytesread);
+            await hubConnection.SendAsync("RequestKey", Convert.ToBase64String(userRsa.ExportRSAPublicKey()));
+            Debug.WriteLine(Convert.ToBase64String(userRsa.ExportRSAPublicKey()));
+            Debug.WriteLine("Key send");
         }
 
         public async void SendMessage(object sender, EventArgs args)
         {
-            var message = serverRsa.Encrypt(Encoding.UTF8.GetBytes("Text"), RSAEncryptionPadding.OaepSHA256);
-            var encryptedMessage = await hubConnection.InvokeAsync<byte[]>("Message", message);
+            byte[] message = serverRsa.Encrypt(Encoding.UTF8.GetBytes("Text"), RSAEncryptionPadding.OaepSHA1);
+            await hubConnection.SendAsync("Message", message);
         }
 
         public async Task ReceiveMessage(byte[] encryptedMessage)
         {
+            var decrypt = this.userRsa.Decrypt(encryptedMessage, RSAEncryptionPadding.OaepSHA1);
             
+            
+            Debug.WriteLine(Encoding.UTF8.GetString(decrypt));
         }
 
     }

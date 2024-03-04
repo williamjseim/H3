@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -6,16 +7,19 @@ namespace HackGame.Api.Hubs
 {
     public class Chathub : Hub
     {
-        RSA rsa = RSA.Create();
-        RSA userRsa = RSA.Create();
+        RSA rsa;
+        RSA userRsa;
         public Chathub()
         {
+            this.rsa = RSA.Create();
+            userRsa = RSA.Create();
             rsa.KeySize = 2048;
             userRsa.KeySize = 2048;
         }
         public override async Task OnConnectedAsync()
         {
-            byte[] userData = await Clients.Caller.InvokeAsync<byte[]>("RequestKey", this.rsa.ExportRSAPublicKey(), new CancellationToken());
+            await Console.Out.WriteLineAsync("connected");
+            await Clients.Caller.SendAsync("RequestKey", Convert.ToBase64String(this.rsa.ExportRSAPublicKey()));
             return;
         }
 
@@ -24,19 +28,23 @@ namespace HackGame.Api.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task<byte[]> RequestKey(byte[] key)
+        public async Task RequestKey(string key)
         {
-            this.userRsa.ImportRSAPublicKey(key, out int byasdw);
-            return this.rsa.ExportRSAPublicKey();
+            Console.WriteLine(Convert.ToBase64String(userRsa.ExportRSAPublicKey()));
+            this.userRsa.ImportRSAPublicKey(Convert.FromBase64String(key), out int byasdw);
+            return;
         }
 
-        public async Task<byte[]> Message(string text, byte[] key)
+        public async Task Message(byte[] text)
         {
-            userRsa.ImportRSAPublicKey(key, out int bytes);
-            var message = userRsa.Encrypt(Encoding.UTF8.GetBytes(text), RSAEncryptionPadding.OaepSHA256);
-            await Console.Out.WriteLineAsync(text);
-            await Console.Out.WriteLineAsync(Encoding.UTF8.GetString(message));
-            return message;
+            Console.WriteLine(Encoding.UTF8.GetString(text));
+            /*await Clients.Caller.SendAsync("ReceiveMessage", text);
+            return;//*/
+            byte[] decrypt = rsa.Decrypt(text, RSAEncryptionPadding.OaepSHA1);
+            byte[] message = userRsa.Encrypt(decrypt, RSAEncryptionPadding.OaepSHA1);
+            //await Console.Out.WriteLineAsync(Encoding.UTF8.GetString(decrypt));
+            await Clients.Caller.SendAsync("ReceiveMessage", message);
+            return;
         }
     }
 }

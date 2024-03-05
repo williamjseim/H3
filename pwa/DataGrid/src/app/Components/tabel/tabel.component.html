@@ -1,7 +1,7 @@
 <div class="ButtonDiv btn" id="ButtonContainer">
-    <input #UploadImage (change)="UploadTest($event)" type="file"  accept=".jpg, .png, .jpeg" value="Test" style="display: none;">
+    <input #UploadImage (change)="Upload($event)" type="file"  accept=".jpg, .png, .jpeg" value="Test" style="display: none;">
     <button mat-fab (click)="UploadImageActivator()"><mat-icon >upload</mat-icon></button>
-    <button mat-fab (click)="DeleteRow(1)"><mat-icon >delete</mat-icon></button>
+    <button mat-fab (click)="DeleteRow()"><mat-icon >delete</mat-icon></button>
 </div>
 <table class="Table" mat-table [dataSource]="data$">
     

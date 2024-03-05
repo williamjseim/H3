@@ -1,19 +1,29 @@
-<div class="ButtonDiv" id="ButtonContainer">
+<div class="ButtonDiv btn" id="ButtonContainer">
     <input #UploadImage (change)="UploadTest($event)" type="file"  accept=".jpg, .png, .jpeg" value="Test" style="display: none;">
     <button mat-fab (click)="UploadImageActivator()"><mat-icon >upload</mat-icon></button>
+    <button mat-fab (click)="DeleteRow(1)"><mat-icon >delete</mat-icon></button>
 </div>
 <table class="Table" mat-table [dataSource]="data$">
+    
+    <ng-container matColumnDef="Checked">
+        <th mat-header-cell *matHeaderCellDef>Check</th>
+        <td mat-cell *matCellDef="let element">
+            <mat-checkbox (change)="element.Checked = $event.checked"></mat-checkbox>
+            <label>Mark</label>
+        </td>
+    </ng-container>
+
     <ng-container matColumnDef="Image">
         <th mat-header-cell *matHeaderCellDef>Image</th>
         <td mat-cell *matCellDef="let element">
-            <img [src]="element.Image">
+            <img class="UploadedImage" src="{{element.ImagePath}}">
         </td>
     </ng-container>
 
     <ng-container matColumnDef="DropBox">
         <th mat-header-cell *matHeaderCellDef>Info</th>
         <td mat-cell *matCellDef="let element">
-            <mat-menu #Info="matMenu">
+            <mat-menu #Info="matMenu"> asss
                 <label mat-menu-item>{{element.Size}}</label>
                 <label mat-menu-item>{{element.FileType}}</label>
             </mat-menu>

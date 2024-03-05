@@ -1,5 +1,7 @@
 export interface ImageRow {
-    Image:File;
+    ImagePath:string;
     Size:number;
     FileType:string;
+    Checked:boolean;
+    Id:number;
 }

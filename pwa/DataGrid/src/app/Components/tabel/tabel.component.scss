@@ -5,9 +5,23 @@
 
 .ButtonDiv{
     padding: 1%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.btn{
+    #parent > * {
+        margin-left: 10px;
+    }
 }
 
 .Table{
     color: white;
 
+}
+
+.UploadedImage{
+    max-width: 100px;
+    max-height: 100px;
 }

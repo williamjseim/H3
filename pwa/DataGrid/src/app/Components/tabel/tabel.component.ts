@@ -3,14 +3,14 @@ import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipModule } from '@angular/material/tooltip';
 import { ViewChild } from '@angular/core';
 import {MatMenuModule} from '@angular/material/menu';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ImageRow } from '../../Interface/image-row';
-import { Observable, merge, of } from 'rxjs';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {  MatDialog,  MAT_DIALOG_DATA,  MatDialogRef,  MatDialogTitle,  MatDialogContent,  MatDialogActions,  MatDialogClose,} from '@angular/material/dialog';
+import { Observable, of } from 'rxjs';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
 import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.component';
 
 
@@ -22,37 +22,30 @@ import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.comp
   styleUrl: './tabel.component.scss'
 })
 export class TabelComponent {
+
+  //observable for material table
   data$:Observable<ImageRow[]> = new Observable<ImageRow[]>;
+  
+  //array of imagerows
   imageList:ImageRow[] = [];
   displayedColumns: string[] = ['Checked', 'Image', 'DropBox'];
+  //
   @ViewChild('UploadImage') UploadButton!:ElementRef<HTMLInputElement>;
-  
+  ImageListStorage:string = "ImageList";
+
   constructor(public dialog:MatDialog){}
 
   ngOnInit(){
     
   }
 
-  ngAfterViewInit(){
-    //this.UploadButton.nativeElement.addEventListener("change", this.UploadImage)
-  }
-
-  Test(){
-
-  }
-  
+  //the input button was really ugly so i made a fab button with material and call the inputbutton the this method
   UploadImageActivator(){
     this.UploadButton.nativeElement.click();
   }
 
-  UploadImage(images:File){
-    console.log(this.UploadButton.nativeElement.id)
-    if(this.UploadButton.nativeElement.files!.length >= 1){
-      console.log(this.UploadButton.nativeElement.files?.item(0)?.type);
-    }
-  }
-
-  UploadTest(event:Event){
+  //cant rename this for some reason it throws an error
+  Upload(event:Event){
     const element = event.currentTarget as HTMLInputElement;
     if(element.files?.length! == 0)
       return;
@@ -67,9 +60,11 @@ export class TabelComponent {
         this.data$ = of(this.imageList);
       }
       reader.readAsDataURL(element.files![0])
+      this.UpdateStorage();
   }
 
-  DeleteRow(index:number){
+  //gets called then the deletion dialog box gets answered
+  DeleteRow(){
     this.dialog.open(DeletionDialogComponent).afterClosed().subscribe({next:(e)=>{
       if(e == true){
         this.Delete();
@@ -77,6 +72,7 @@ export class TabelComponent {
     }})
   }
 
+  //deletes the marked rows
   Delete(){
     let newList:ImageRow[] = [];
     this.imageList.forEach(element => {
@@ -85,6 +81,19 @@ export class TabelComponent {
     });
     this.imageList = newList;
     this.data$ = of(this.imageList);
+    this.UpdateStorage();
     
+  }
+
+  //updates the sessionstorage of imagerows
+  UpdateStorage(){
+    sessionStorage.setItem(this.ImageListStorage, JSON.stringify(this.imageList))
+  }
+
+  GetImageList(): ImageRow[]{
+    if(sessionStorage.getItem(this.ImageListStorage) != null)
+      return JSON.parse(sessionStorage.getItem(this.ImageListStorage)!) as ImageRow[];
+
+    return [];
   }
 }

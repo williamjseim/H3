@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/diagnostics.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutterh3/Provider/counterProvider.dart';
+import 'package:flutterh3/Widgets/ProviderWidget.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -12,10 +16,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-      ChangeNotifierProvider(create: (context)=>CounterProvider())
-    ],
-    child: const MyHomePage(title: 'title'));
+    return MaterialApp.router(
+      routerConfig: _router,
+    );
   }
 }
 
@@ -37,6 +40,23 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state){
+        return const HomeScreen();
+      },
+    ),
+    GoRoute(
+      path: '/Provider',
+      builder: (BuildContext context, GoRouterState state){
+        return ProviderWidget();
+      },
+    ),
+  ]
+);
+
 class _MyHomePageState extends State<MyHomePage> {
   CounterProvider? provider;
   void _incrementCounter() {
@@ -52,79 +72,64 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     provider = context.read<CounterProvider>();
-    return MaterialApp(
-      home: Scaffold(
+    return MaterialApp.router(
+
+      routerConfig: _router
+    );
+  }
+
+
+}
+  class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+AppBar mainappbar() => AppBar(
+  shadowColor: const Color.fromARGB(255, 9, 255, 0),
+  // TRY THIS: Try changing the color here to a specific color (to
+  // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+  // change color while the other colors stay the same.
+  backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+  // Here we take the value from the MyHomePage object that was created by
+  // the App.build method, and use it to set our appbar title.
+  title: const Text("Title"),
+);
+
+class _HomeScreenState extends State<HomeScreen> {
+        @override
+        Widget build(BuildContext context) {
+          return Scaffold(
         appBar: AppBar(
+          shadowColor: const Color.fromARGB(255, 9, 255, 0),
           // TRY THIS: Try changing the color here to a specific color (to
           // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
           // change color while the other colors stay the same.
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: const Color.fromARGB(255, 255, 0, 0),
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
+          title: const Text("Title"),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Consumer<CounterProvider>(
-                builder: (context, value, child){
-                  return Text(
-                    provider!.counter.counter.toString(),
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  );
-                },
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: Theme(
-                          data: ThemeData(
-                            shadowColor: const Color.fromARGB(255, 9, 255, 0)
-                          ),
-                          child: FloatingActionButton(
-                            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                            onPressed: _incrementCounter,
-                            tooltip: 'Increment',
-                            child: const Icon(Icons.add, color: Color.fromARGB(255, 9, 255, 0),),
-                          ),
-                        ), 
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: Theme(
-                          data: ThemeData(
-                            shadowColor: const Color.fromARGB(255, 9, 255, 0)
-                          ),
-                          child: FloatingActionButton(
-                            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                            onPressed: _decrementCounter,
-                            tooltip: 'Increment',
-                            child: const Icon(Icons.remove, color: Color.fromARGB(255, 9, 255, 0),),
-                          ),
-                        ),
-                      )
-                    ],
-                  ), 
-                ],
-              ),
-            ],
+        drawer: Drawer(
+            backgroundColor: const Color.fromARGB(0, 255, 255, 255), 
+            shadowColor: const Color.fromARGB(255, 9, 255, 0),
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                const DrawerHeader(child: Text("data")),
+                ListTile(leading: const Icon(Icons.home), title: const Text("Home"), onTap: () => context.go('/'),),
+                ListTile(leading: const Icon(Icons.block), title: const Text("Bloc"), onTap: () => context.go('/Provider'),),
+              ],
+            ),
           ),
-        ),
         /*floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'Increment',
           child: const Icon(Icons.add),
         ), // This trailing comma makes auto-formatting nicer for build methods.*/
-      ),
-    );
-  }
+      );
+    }
+
 }

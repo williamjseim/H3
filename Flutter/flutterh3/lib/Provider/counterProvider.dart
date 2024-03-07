@@ -5,13 +5,15 @@ class CounterProvider extends ChangeNotifier{
   CounterObject counter = CounterObject(0);
 
   void increment(){
-    this.counter = CounterObject(counter.counter + 1);
+    counter = CounterObject(counter.counter + 1);
     notifyListeners();
   }
 
   void decrement(){
-    this.counter = CounterObject(counter.counter - 1);
-    notifyListeners();
+    if(counter.counter > 0){
+      this.counter = CounterObject(counter.counter - 1);
+      notifyListeners();
+    }
   }
 }
 

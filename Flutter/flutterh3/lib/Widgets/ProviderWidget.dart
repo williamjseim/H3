@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutterh3/Provider/counterProvider.dart';
 import 'package:flutterh3/main.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class ProviderWidget extends StatelessWidget{
+  const ProviderWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context)=> CounterProvider())
+          ChangeNotifierProvider(create: (context) => CounterProvider()),
         ],
-        child: Scaffold(
-          appBar: mainappbar(),
+        builder: (context, child) => Scaffold(
+          appBar: mainappbar(context),
+          drawer: ElevatedButton(onPressed: (){ context.go('/'); }, child: const Icon(Icons.keyboard_return), ),
           body: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

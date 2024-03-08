@@ -15,11 +15,6 @@ class BlocScreen extends StatelessWidget{
     ],
      child: Scaffold(
       appBar: mainappbar(context),
-      persistentFooterButtons:[ FloatingActionButton(
-        onPressed: (){context.go('/');},
-        child: const Icon(Icons.back_hand),
-      ),
-      ],
       body: BlocBuilder<CounterBloc, int>(
         builder: (context, state) => Center(
           child: Column(
@@ -44,12 +39,36 @@ class BlocScreen extends StatelessWidget{
                                   data: ThemeData(
                                     shadowColor: const Color.fromARGB(255, 9, 255, 0)
                                   ),
-                                  child: FloatingActionButton(
-                                    heroTag: "button1",
-                                    backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                                    onPressed: () { context.read<CounterBloc>().add(CounterIncrementEvent()); },
-                                    tooltip: 'Increment',
-                                    child: const Icon(Icons.add, color: Color.fromARGB(255, 9, 255, 0),),
+                                  child: BlocConsumer<CounterBloc, int>(
+                                    listener: (context, state) { },
+                                    builder: (context, state) => Visibility(
+                                        visible: !(state >= 10),
+                                        child: FloatingActionButton(
+                                          heroTag: "button1",
+                                          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                                          onPressed: () { context.read<CounterBloc>().add(CounterIncrementEvent()); },
+                                          tooltip: 'Increment',
+                                          child: const Icon(Icons.add, color: Color.fromARGB(255, 9, 255, 0),),
+                                        ),
+                                      ),
+                                  ),
+                                  ),
+                                  ),
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                child: Theme(
+                                  data: ThemeData(
+                                    shadowColor: const Color.fromARGB(255, 9, 255, 0)
+                                  ),
+                                  child: Visibility(
+                                    visible: !(state <= 0),
+                                    child: FloatingActionButton(
+                                      heroTag: "button2",
+                                      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                                      onPressed: () { context.read<CounterBloc>().add(CounterDecrementEvent()); },
+                                      tooltip: 'Decrement',
+                                      child: const Icon(Icons.remove, color: Color.fromARGB(255, 9, 255, 0),),
+                                    ),
                                   ),
                                   ),
                                 ), 
@@ -59,23 +78,33 @@ class BlocScreen extends StatelessWidget{
                                   data: ThemeData(
                                     shadowColor: const Color.fromARGB(255, 9, 255, 0)
                                   ),
-                                  child: FloatingActionButton(
-                                    heroTag: "button2",
-                                    backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                                    onPressed: () { context.read<CounterBloc>().add(CounterDecrementEvent()); },
-                                    tooltip: 'Decrement',
-                                    child: const Icon(Icons.remove, color: Color.fromARGB(255, 9, 255, 0),),
+                                  child: Visibility(
+                                    visible: !(state <= 0),
+                                    maintainState: true,
+                                    replacement: FloatingActionButton(
+                                      heroTag: "button2",
+                                      backgroundColor: Color.fromARGB(255, 51, 51, 51),
+                                      onPressed: () { context.read<CounterBloc>().add(CounterDecrementEvent()); },
+                                      tooltip: 'Decrement',
+                                      child: const Icon(Icons.remove, color: Color.fromARGB(255, 2, 71, 0),),
+                                    ),
+                                    child: FloatingActionButton(
+                                      heroTag: "button2",
+                                      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                                      onPressed: () { context.read<CounterBloc>().add(CounterDecrementEvent()); },
+                                      tooltip: 'Decrement',
+                                      child: const Icon(Icons.remove, color: Color.fromARGB(255, 9, 255, 0),),
+                                    ),
                                   ),
                                   ),
                                 ), 
+                                ]), 
                     ]),
                   ]), 
-                ],
               ),
             ),
       ),
-     ),
-    );
+     );
   }
 
 }

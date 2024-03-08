@@ -1,20 +1,15 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/diagnostics.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutterh3/Provider/counterProvider.dart';
 import 'package:flutterh3/Widgets/BlocScreen.dart';
 import 'package:flutterh3/Widgets/ProviderWidget.dart';
+import 'package:flutterh3/Widgets/RandomScreen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(
-    MaterialApp.router(
-      routerConfig: _router,
-    )
-  );
+  runApp(MaterialApp.router(
+    routerConfig: _router,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -47,28 +42,32 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-final GoRouter _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state){
-        return const HomeScreen();
-      },
-    ),
-    GoRoute(
-      path: '/Provider',
-      builder: (BuildContext context, GoRouterState state){
-        return const ProviderWidget();
-      },
-    ),
-    GoRoute(
-      path: '/Bloc',
-      builder: (BuildContext context, GoRouterState state){
-        return const BlocScreen();
-      },
-    ),
-  ]
-);
+final GoRouter _router = GoRouter(routes: [
+  GoRoute(
+    path: '/',
+    builder: (BuildContext context, GoRouterState state) {
+      return const HomeScreen();
+    },
+  ),
+  GoRoute(
+    path: '/Provider',
+    builder: (BuildContext context, GoRouterState state) {
+      return const ProviderWidget();
+    },
+  ),
+  GoRoute(
+    path: '/Bloc',
+    builder: (BuildContext context, GoRouterState state) {
+      return const BlocScreen();
+    },
+  ),
+  GoRoute(
+    path: '/Random',
+    builder: (BuildContext context, GoRouterState state) {
+      return const RandomScreen();
+    },
+  ),
+]);
 
 class _MyHomePageState extends State<MyHomePage> {
   CounterProvider? provider;
@@ -76,8 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
     provider!.increment();
   }
 
-  void _decrementCounter(){
-    if(provider!.counter.counter > 0){
+  void _decrementCounter() {
+    if (provider!.counter.counter > 0) {
       provider!.decrement();
     }
   }
@@ -85,15 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     provider = context.read<CounterProvider>();
-    return MaterialApp.router(
-
-      routerConfig: _router
-    );
+    return MaterialApp.router(routerConfig: _router);
   }
-
-
 }
-  class HomeScreen extends StatefulWidget {
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
@@ -101,39 +96,58 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 AppBar mainappbar(BuildContext context) => AppBar(
-  shadowColor: const Color.fromARGB(255, 9, 255, 0),
-  // TRY THIS: Try changing the color here to a specific color (to
-  // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-  // change color while the other colors stay the same.
-  backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-  // Here we take the value from the MyHomePage object that was created by
-  // the App.build method, and use it to set our appbar title.
-  title: const Text("Title"),
-  leading:FloatingActionButton(
-    onPressed: (){context.go('/');},
-    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-    child: const Icon(Icons.keyboard_return_rounded),
-  ),
-);
+      shadowColor: const Color.fromARGB(255, 9, 255, 0),
+      // TRY THIS: Try changing the color here to a specific color (to
+      // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+      // change color while the other colors stay the same.
+      backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+      // Here we take the value from the MyHomePage object that was created by
+      // the App.build method, and use it to set our appbar title.
+      title: const Text("Title"),
+      leading: FloatingActionButton(
+        onPressed: () {
+          context.go('/');
+        },
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        child: const Icon(Icons.keyboard_return_rounded),
+      ),
+    );
 
 Drawer mainappdrawer(BuildContext context) => Drawer(
-  backgroundColor: const Color.fromARGB(0, 255, 255, 255), 
-  shadowColor: const Color.fromARGB(255, 9, 255, 0),
-  child: ListView(
-    scrollDirection: Axis.vertical,
-    children: [
-      const DrawerHeader(child: Text("data")),
-      ListTile(leading: const Icon(Icons.home), title: const Text("Home"), onTap: () => context.go('/'),),
-      ListTile(leading: const Icon(Icons.block), title: const Text("Provider"), onTap: () => context.go('/Provider'),),
-      ListTile(leading: const Icon(Icons.block), title: const Text("Bloc"), onTap: () => context.go('/Bloc'),),
-    ],
-  ),
-);
+      backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+      shadowColor: const Color.fromARGB(255, 9, 255, 0),
+      child: ListView(
+        scrollDirection: Axis.vertical,
+        children: [
+          const DrawerHeader(child: Text("data")),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text("Home"),
+            onTap: () => context.go('/'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.block),
+            title: const Text("Provider"),
+            onTap: () => context.go('/Provider'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.account_tree),
+            title: const Text("Bloc"),
+            onTap: () => context.go('/Bloc'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.door_back_door),
+            title: const Text("Random"),
+            onTap: () => context.go('/Random'),
+          ),
+        ],
+      ),
+    );
 
 class _HomeScreenState extends State<HomeScreen> {
-        @override
-        Widget build(BuildContext context) {
-          return Scaffold(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           shadowColor: const Color.fromARGB(255, 9, 255, 0),
           // TRY THIS: Try changing the color here to a specific color (to
@@ -150,7 +164,6 @@ class _HomeScreenState extends State<HomeScreen> {
           tooltip: 'Increment',
           child: const Icon(Icons.add),
         ), // This trailing comma makes auto-formatting nicer for build methods.*/
-      );
-    }
-
+        );
+  }
 }

@@ -3,8 +3,10 @@ import 'package:flutterh3/Provider/counterProvider.dart';
 import 'package:flutterh3/Widgets/BlocScreen.dart';
 import 'package:flutterh3/Widgets/ProviderWidget.dart';
 import 'package:flutterh3/Widgets/RandomScreen.dart';
+import 'package:flutterh3/Widgets/ViewImageScreen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:flutterh3/Widgets/CameraScreen.dart';
 
 void main() {
   runApp(MaterialApp.router(
@@ -65,6 +67,18 @@ final GoRouter _router = GoRouter(routes: [
     path: '/Random',
     builder: (BuildContext context, GoRouterState state) {
       return const RandomScreen();
+    },
+  ),
+  GoRoute(
+    path: '/Camera',
+    builder: (BuildContext context, GoRouterState state) {
+      return const Camera();
+    },
+  ),
+  GoRoute(
+    path: '/Image',
+    builder: (BuildContext context, GoRouterState state) {
+      return ImageView();
     },
   ),
 ]);
@@ -139,6 +153,16 @@ Drawer mainappdrawer(BuildContext context) => Drawer(
             leading: const Icon(Icons.door_back_door),
             title: const Text("Random"),
             onTap: () => context.go('/Random'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.door_back_door),
+            title: const Text("Camera"),
+            onTap: () => context.go('/Camera'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.door_back_door),
+            title: const Text("Image"),
+            onTap: () => context.go('/Image'),
           ),
         ],
       ),

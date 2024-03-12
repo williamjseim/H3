@@ -44,7 +44,6 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver, TickerProv
 
    Future _cameraPreviewWidget() async {
     var cameras = await availableCameras();
-    const String text = "asss";
     CameraController camera = CameraController(
       cameras[0],
       kIsWeb ? ResolutionPreset.high : ResolutionPreset.medium,

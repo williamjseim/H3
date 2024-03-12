@@ -64,16 +64,15 @@ class _ImageViewState extends State<ImageView> {
   }
 
   Future<Widget> image() async {
-    //var bytes = await FlutterSecureStorage().read(key: "Image") as String;
-    //var imagebytes = Base64Decoder().convert(bytes);
+    /*var bytes = await FlutterSecureStorage().read(key: "Image") as String;
+    var imagebytes = Base64Decoder().convert(bytes);
+    Image image = Image.memory(imagebytes);// */
     Image image = Image.asset("favicon.png");
     return Draggable<Widget>(
       feedback: image,
       childWhenDragging: Container(
-        height: 100,
-        width: 100,
-        child: DecoratedBox(
-          decoration: BoxDecoration(color: Colors.black),
+       child: DecoratedBox(
+         decoration: BoxDecoration(color: Colors.black),
         ),
       ),
       data: image,

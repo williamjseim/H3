@@ -46,6 +46,8 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver, TickerProv
     );
   }
 
+
+//flutter run -d chrome --web-browser-flag "--disable-web-security"
    Future _cameraPreviewWidget() async {
     var http = HttpClient();
     var cameras = await availableCameras();

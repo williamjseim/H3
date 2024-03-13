@@ -22,6 +22,9 @@ namespace HackGame.Api
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSignalR();
+            builder.WebHost.ConfigureKestrel(options=>{
+                options.Limits.MaxRequestLineSize = 1048576;
+            });
 
             //builder.Services.AddDbContext<HackerGameDbContext>(options =>
             //options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));

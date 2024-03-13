@@ -1,4 +1,7 @@
 import 'dart:convert';
+import 'dart:html';
+import 'dart:ui_web';
+import 'package:flutter/services.dart';
 import 'package:universal_io/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +47,7 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver, TickerProv
   }
 
    Future _cameraPreviewWidget() async {
-    HttpClient http = HttpClient();
+    var http = HttpClient();
     var cameras = await availableCameras();
     CameraController camera = CameraController(
       cameras[0],
@@ -59,13 +62,15 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver, TickerProv
           camera,
         ),
         FloatingActionButton(
-          
-          onPressed: () async { camera.takePicture().then((value) async => {
-            value.readAsBytes().then((bytes) async{
-              HttpClientResponse response = await http.postUrl(Uri.parse("http://10.0.2.2:5142/Image/${base64Encode(bytes)}")).then((value) => value.close()),
-
-            }),
-          });
+          onPressed: () async {
+            var picture = await camera.takePicture();
+            var bytes = await picture.readAsBytes();
+            var base64 = base64Encode(bytes);
+            var uri = Uri.http("localhost:5142", "/Image", {"Image" : base64});
+            var request = await http.postUrl(uri);
+            request.headers.add("Access-Control-Allow-Origin", "*");
+            var response = await request.close();
+            print(request);
           },
           child: const Icon(Icons.camera),
         )

@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
-import 'dart:ui_web';
 import 'package:flutter/services.dart';
 import 'package:universal_io/io.dart';
 import 'package:flutter/foundation.dart';
@@ -68,7 +66,7 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver, TickerProv
             var picture = await camera.takePicture();
             var bytes = await picture.readAsBytes();
             var base64 = base64Encode(bytes);
-            var uri = Uri.http("localhost:5142", "/Image", {"Image" : base64});
+            var uri = Uri.http("10.0.2.2:5142", "/Image", {"Image" : base64});
             var request = await http.postUrl(uri);
             request.headers.add("Access-Control-Allow-Origin", "*");
             var response = await request.close();

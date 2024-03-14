@@ -69,6 +69,7 @@ flutter:
     - assets/
     - assets/giphy.gif
     - assets/MainBackground.gif
+    - assets/favicon.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

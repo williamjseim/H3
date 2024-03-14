@@ -58,7 +58,7 @@ class _ImageViewState extends State<ImageView> {
                 color: Colors.amber,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 7,
+                  itemCount: 3,
                   itemBuilder: (context, index){
                   return FutureBuilder(future: image(context), builder: (context, snapshot){
                     if(snapshot.data == null){

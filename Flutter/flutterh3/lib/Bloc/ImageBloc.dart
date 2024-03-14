@@ -37,7 +37,6 @@ class Images {
       child: Image.asset(image),
       );
       images.add(widget);
-      print("images ${images.length}");
       return images;
   }
 }

@@ -40,9 +40,14 @@ dependencies:
   go_router: ^13.2.0
   camera: ^0.10.5+9
   flutter_secure_storage: ^9.0.0
+  camera_universal: ^0.0.3
+  icons_plus: ^5.0.0
+  zoom_widget: ^2.0.1
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  integration_test:
     sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to

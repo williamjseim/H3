@@ -66,7 +66,7 @@ class CameraScreen extends StatelessWidget{
                                 if(controller != null){
                                   var file = await controller!.takePicture();
                                   file.readAsBytes().then((value) => {
-                                    context.read<CameraBloc>().add(NewImageEvent(base64Encode(value))) //context should not be called in an async function so i used a callback instead
+                                    context.read<CameraBloc>().add(NewImageEvent(base64Encode(value)))
                                   });
                                 }
                               },

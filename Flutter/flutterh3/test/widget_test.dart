@@ -5,9 +5,12 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutterh3/Screens/ViewImageScreen.dart';
+import 'package:flutterh3/Widgets/mainComponents.dart';
 
 import 'package:flutterh3/main.dart';
 
@@ -22,13 +25,14 @@ void main() {
   });
   
   testWidgets("Drag test on view image screen", (widgetTester) async {
-    await widgetTester.pumpWidget(const MyApp());
+    TestWidgetsFlutterBinding.ensureInitialized();
     await widgetTester.pumpWidget(MaterialApp(
       home: ImageView(),
     ));
     
-    await widgetTester.pump( const Duration(seconds: 5));
-    print(widgetTester.any(find.byType(Container)));
+    await widgetTester.pump( const Duration(seconds: 1));
+    print(widgetTester.any(find.byType(Image)));
+    expect(mainappbar, findsOneWidget);
     //await widgetTester.drag(find.image(AssetImage("favicon.png")), Offset(100.1, 100.1));
 
   });

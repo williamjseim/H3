@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:opslags_tavle/Screens/board_screen.dart';
 import 'package:opslags_tavle/Screens/camera_screen.dart';
+import 'package:opslags_tavle/Widgets/custom_widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,29 +35,33 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(),
-      body: Center(
-        child: LayoutBuilder(
+      appBar: PreferredSize(preferredSize: Size(100,104), child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(repeat: ImageRepeat.repeatX, image: AssetImage("assets/koi.png")),
+        ),
+        child: Column(children: [
+          mainAppBar(title: "Koi Images"),
+          LayoutBuilder(
             builder: (context, constraints) {
-              return Container(
-                height: constraints.maxHeight,
-                width: constraints.maxWidth,
-                color: Colors.black87,
-                child: Image.asset("assets/giphy.gif"),
+              return OverflowBar(
+                children: [
+                  Container(width: constraints.maxWidth / 3, child: barButton(Route: "/", child:Text("Home", style: TextStyle(color: Colors.white),), backgroundColor: Colors.transparent),),
+                  Container(width: constraints.maxWidth / 3, child: barButton(Route: "/Camera", child:Text("Camera", style: TextStyle(color: Colors.white),), backgroundColor: Colors.transparent),),
+                  Container(width: constraints.maxWidth / 3, child: barButton(Route: "/Board", child:Text("Board", style: TextStyle(color: Colors.white),), backgroundColor: Colors.transparent),),
+                ],
               );
             }
-          ),
+          )
+        ],),
+      ),),
+      body: Container(
+        color: Colors.black,
+        child: Center(
+          child: Image.asset("assets/giphy.gif"),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () => context.go("/Camera"), child: Icon(Icons.menu),),
-      );
+      ),
+    );
   }
-}
-
-AppBar mainAppBar({String title = "Missing Title"}){
-  return AppBar(
-    title: Text(title),
-    backgroundColor: Colors.red,
-  );
 }
 
 final GoRouter _router = GoRouter(routes: [
@@ -70,6 +75,12 @@ final GoRouter _router = GoRouter(routes: [
     path: "/Camera",
     builder: (context, state) {
       return const CameraScreen();
+    },
+  ),
+  GoRoute(
+    path: "/Board",
+    builder: (context, state) {
+      return const BoardScreen();
     },
   ),
 ]);

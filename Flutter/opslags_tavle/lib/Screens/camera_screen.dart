@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opslags_tavle/Blocs/camera_bloc.dart';
+import 'package:opslags_tavle/Widgets/custom_widgets.dart';
 import 'package:opslags_tavle/main.dart';
 
 class CameraScreen extends StatelessWidget{
@@ -15,19 +16,21 @@ class CameraScreen extends StatelessWidget{
     late CameraController? controller;
     return Scaffold(
       backgroundColor: Colors.black87,
-      appBar: mainAppBar(),
       body: MultiBlocProvider(
         providers: [BlocProvider(create: (a) => CameraBloc())],
         child: Center(
           child: LayoutBuilder(builder: (context, constraints) {
             return Column(
               children: [
+                tabBar(height: constraints.maxHeight * 0.1),
                 Container(
-                  height: constraints.maxHeight * 0.9,
+                  height: constraints.maxHeight * 0.8,
                   child: Center(
                     child: FutureBuilder(future: _cameraPreview(), builder:(context, snapshot) {
                       if(!snapshot.hasData){
-                        return const Center(child: CircularProgressIndicator());
+                        return Center(
+                          child: CircularImageSpinner(duration: const Duration(seconds: 5)),
+                          );
                       }
                       else{
                         controller = snapshot.data!.$2;
@@ -89,7 +92,7 @@ class CameraScreen extends StatelessWidget{
 Future<(Widget, CameraController)> _cameraPreview() async{
   Widget widget = Text("fuck");
   var cameras = await availableCameras();
-  Future.delayed(Duration(seconds: 1));
+  await Future.delayed(const Duration(seconds: 4));
   var controller = CameraController(cameras[0], kIsWeb ? ResolutionPreset.high : ResolutionPreset.medium, enableAudio: false, imageFormatGroup: ImageFormatGroup.jpeg);
   await controller.initialize().then((value) {
     widget = CameraPreview(controller);

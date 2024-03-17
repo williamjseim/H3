@@ -22,8 +22,11 @@ class ImageBloc extends Bloc<ImageEvent, ImageData>{
     FlutterSecureStorage storage = const FlutterSecureStorage();
     List<String> images;
     if(await storage.containsKey(key: "Images")){
+      print("storage exists");
       var list = await storage.read(key: "Images");
       images = await compute<String, List<String>>((message) => List<String>.from(json.decode(message) as List<dynamic>), list!);
+      print(images.length.toString() + " asdwawddasdw");
+      return images;
     }
     else{
       images = [];
@@ -34,6 +37,6 @@ class ImageBloc extends Bloc<ImageEvent, ImageData>{
 }
 
 class ImageData{
-  List<String> localImages = List.empty();
-  List<String> apiImages = List.empty();
+  List<String> localImages = [];
+  List<String> apiImages = [];
 }

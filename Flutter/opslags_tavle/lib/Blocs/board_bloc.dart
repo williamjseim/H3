@@ -11,29 +11,37 @@ class DraggableDropped extends BoardEvent {
   String image;
 }
 
-class OpenCloseEvent extends BoardEvent {}
+class MoveDroppedEvent extends BoardEvent{
+  MoveDroppedEvent(this.offset);
+  Offset offset;
+}
+
+class OpenCloseEvent extends BoardEvent { OpenCloseEvent(this.open); bool open;}
 class ClearEvent extends BoardEvent {}
 
 class BoardBloc extends Bloc<BoardEvent, BoardData>{
   BoardBloc(super.initialState){
-    on<OpenCloseEvent>((event, emit) { state.ImageWidgetOpen = !state.ImageWidgetOpen; emit(state); });
+    on<OpenCloseEvent>((event, emit) { emit(BoardData.Fill(state.widgets, event.open)); });
     on<DraggableDropped>((event, emit) {
-      Widget pos = Positioned(
-        top: event.offset.dy,
-        left: event.offset.dx,
-        child: Image.memory(base64Decode(event.image))
-      );
-
-      state.widgets.add(pos);
-      emit(state);
+      var data = DraggableImage(event.offset, event.image);
+      var newState = BoardData.Fill(state.widgets, !state.imageWidgetOpen);
+      newState.widgets.add(data);
+      newState.boardChanged = true;
+      emit(newState);
     });
   }
-  
 }
 
 class BoardData{
   BoardData();
-  List<Widget> widgets = List<Widget>.empty();
-  bool ImageWidgetOpen = false;
-  
+  BoardData.Fill(this.widgets, this.imageWidgetOpen);
+  List<DraggableImage> widgets = [];
+  bool imageWidgetOpen = false;
+  bool boardChanged = false;
+}
+
+class DraggableImage{
+  DraggableImage(this.offset, this.image);
+  Offset offset;
+  String image;
 }

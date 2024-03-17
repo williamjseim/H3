@@ -35,11 +35,10 @@ import 'package:universal_io/io.dart';
     String jsonString = await compute<List<String>, String>((message) => json.encode(message), images);
     await storage.write(key: "Images", value: jsonString);
     //await _isolateUpload(base64);
-    Isolate.spawn(_isolateUpload, base64);
+    //Isolate.spawn(_isolateUpload, base64);
   }
 
   Future<void> _isolateUpload(String base64) async{
-    print("isolation");
     HttpClient client = HttpClient();
     Uri uri;
     if(Platform.isAndroid){
@@ -49,8 +48,7 @@ import 'package:universal_io/io.dart';
       uri = Uri.http("localhost:5142", "/Image", {"Image" : base64});  
     }
 
-    var request = await client.postUrl(uri);
-    var response = await request.close();
-    print(response.toString());
+      var request = await client.postUrl(uri);
+      var response = await request.close();
     }
   }

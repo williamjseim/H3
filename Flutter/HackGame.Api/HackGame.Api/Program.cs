@@ -1,5 +1,9 @@
 
+using FirebaseAdmin;
+using FirebaseAdmin.Messaging;
+using Google.Apis.Auth.OAuth2;
 using HackGame.Api.Data;
+using HackGame.Api.TokenAuthorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -29,6 +33,8 @@ namespace HackGame.Api
             //builder.Services.AddDbContext<HackerGameDbContext>(options =>
             //options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
+            builder.Services.AddTransient<JwtAuthorization>();
+
             builder.Services.AddDbContext<HackerGameDbContext>(options =>
             options.UseMySql(builder.Configuration.GetConnectionString("Default"),ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("Default"))));
 
@@ -40,6 +46,12 @@ namespace HackGame.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            FirebaseApp.Create(new AppOptions()
+            {
+                Credential = GoogleCredential.FromFile("C:\\Users\\zbcwise\\Desktop\\h3database-firebase-adminsdk-ptmfl-20b212d236.json"),
+                ProjectId = "h3database",
+            });
 
             app.UseHttpsRedirection();
 

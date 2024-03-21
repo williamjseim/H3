@@ -14,7 +14,7 @@ Widget barButton({required String Route, Widget? child, Color? backgroundColor =
           backgroundColor: backgroundColor,
           foregroundColor: foreGroundColor,
         ),
-        onPressed: (){ context.go(Route); },
+        onPressed: (){ if(context.canPop()){ context.pop(); } context.go(Route); },
         child: child,
         );
     }

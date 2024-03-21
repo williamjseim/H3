@@ -34,30 +34,31 @@ class _BoardScreenState extends State<BoardScreen> {
                             print("move");
                           },
                           onWillAcceptWithDetails: (details) { print("on will accept"); return true; },
-                          onAcceptWithDetails: (details) {
-                          },
                           builder: (context, objects, dynmics) {
-                            return Container(
-                              color: const Color.fromARGB(255, 153, 0, 0),
-                              height: constraints.maxHeight * 0.9,
-                              width: constraints.maxWidth,
-                              child: BlocConsumer<BoardBloc, BoardData>(
-                                buildWhen: (previous, current) {
-                                  bool a = current.boardChanged;
-                                  current.boardChanged = false;
-                                  return a;
-                                },
-                                listener: (context, state) { },
-                                builder: (context, state) {
-                                  return FutureBuilder(
-                                    future: _boardWidgets(state.widgets),
-                                    builder: (context, snapshot) {
-                                      return Stack(
-                                        children: snapshot.hasData ? snapshot.data! : [],
-                                      );
-                                    }
-                                  );
-                                },
+                            print("dragtarget");
+                            return Zoom(
+                              child: Container(
+                                color: const Color.fromARGB(255, 153, 0, 0),
+                                height: constraints.maxHeight * 0.9,
+                                width: constraints.maxWidth,
+                                child: BlocConsumer<BoardBloc, BoardData>(
+                                  buildWhen: (previous, current) {
+                                    bool a = current.boardChanged;
+                                    current.boardChanged = false;
+                                    return a;
+                                  },
+                                  listener: (context, state) { },
+                                  builder: (context, state) {
+                                    return FutureBuilder(
+                                      future: _boardWidgets(state.widgets),
+                                      builder: (context, snapshot) {
+                                        return Stack(
+                                          children: snapshot.hasData ? snapshot.data! : [],
+                                        );
+                                      }
+                                    );
+                                  },
+                                ),
                               ),
                             );
                           },
@@ -97,7 +98,7 @@ class _BoardScreenState extends State<BoardScreen> {
                             );
                             }
                             else{
-                              return FloatingActionButton(key: const Key("ImageButton"), onPressed: (){context.read<ImageBloc>().add(GetLocalImages()); context.read<BoardBloc>().add(OpenCloseEvent(true)); }, child: Icon(Icons.assessment),);
+                              return FloatingActionButton(key: const Key("MenuButton"), onPressed: (){context.read<ImageBloc>().add(GetLocalImages()); context.read<BoardBloc>().add(OpenCloseEvent(true)); }, child: Icon(Icons.menu),);
                             }
                           },
                         )
@@ -144,14 +145,16 @@ class _BoardScreenState extends State<BoardScreen> {
         top: data[i].offset.dy,
         left: data[i].offset.dx,
         child: Draggable(
+          key: const Key("dragtest"),
           child: Image.memory(base64Decode(data[i].image)),
           feedback: Container(height: 100, width: 100, child: Image.memory(base64Decode(data[i].image))),
+          data: Image.memory(base64Decode(data[i].image)),
+          onDragStarted: () {
+            
+          },
           onDragEnd: (details) {
             if(details.wasAccepted){
-              print("asdjwergoihsgroiuhefgiohsdfgoisdrfghodfgiwhwsdogihgdfsoihsdgoihdfg");
-              print(data[i].offset);
               data[i].offset = details.offset;
-              print(data[i].offset);
             }
           },
         ),

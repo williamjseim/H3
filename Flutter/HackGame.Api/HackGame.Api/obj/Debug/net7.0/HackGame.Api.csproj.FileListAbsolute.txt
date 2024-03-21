@@ -499,3 +499,10 @@ F:\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\obj\Debug\net7.0\refint\HackGame.
 F:\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\obj\Debug\net7.0\HackGame.Api.pdb
 F:\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\obj\Debug\net7.0\HackGame.Api.genruntimeconfig.cache
 F:\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\obj\Debug\net7.0\ref\HackGame.Api.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\FirebaseAdmin.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\Google.Api.Gax.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\Google.Api.Gax.Rest.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\Google.Apis.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\Google.Apis.Auth.dll
+C:\Users\zbcwise\Documents\GitHub\H3\Flutter\HackGame.Api\HackGame.Api\bin\Debug\net7.0\Google.Apis.Core.dll

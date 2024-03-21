@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opslags_tavle/Blocs/camera_bloc.dart';
 import 'package:opslags_tavle/Widgets/custom_widgets.dart';
-import 'package:opslags_tavle/main.dart';
 
 class CameraScreen extends StatelessWidget{
   const CameraScreen({super.key});
@@ -92,7 +91,7 @@ class CameraScreen extends StatelessWidget{
 Future<(Widget, CameraController)> _cameraPreview() async{
   Widget widget = Text("fuck");
   var cameras = await availableCameras();
-  await Future.delayed(const Duration(seconds: 4));
+  await Future.delayed(const Duration(seconds: 2));
   var controller = CameraController(cameras[0], kIsWeb ? ResolutionPreset.high : ResolutionPreset.medium, enableAudio: false, imageFormatGroup: ImageFormatGroup.jpeg);
   await controller.initialize().then((value) {
     widget = CameraPreview(controller);
